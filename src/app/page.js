@@ -1,4 +1,5 @@
 import Item from "../components/Item";
+import NavBar from "../components/NavBar";
 import styles from "./page.module.css";
 
 
@@ -6,6 +7,7 @@ export default function Home() {
     return (
         <div className={styles.page}>
             <main className={styles.main}>
+                <NavBar />
                 <Item
                     name="Inter"
                     value="200,00"
