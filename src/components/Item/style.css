@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap");
+
+.icon {
+  display: flex;
+  align-self: center;
+  width: 3vw;
+  height: 10.4vh;
+}
+.pencil {
+  width: 1.7vw;
+  height: 4vh;
+}
+
