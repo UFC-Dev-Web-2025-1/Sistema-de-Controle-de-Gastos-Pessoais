@@ -17,10 +17,10 @@ export default function NavBar()
                     </div>
 
                     <div className="navigation">
-                        <p>Inicío</p>
-                        <p>Relatório</p>
-                        <p>Despesas</p>
-                        <p>Ajustes</p>
+                        <button>Inicío</button>
+                        <button>Relatório</button>
+                        <button>Despesas</button>
+                        <button>Ajustes</button>
                     </div>
                     <div className="logo"></div>
                 </Toolbar>

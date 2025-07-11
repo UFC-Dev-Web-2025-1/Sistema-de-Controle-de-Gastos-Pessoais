@@ -46,7 +46,10 @@ const cards = [
   { id: 3, name: "Elo Mais", value: 980.45, type: "crédito" },
   { id: 4, name: "Nubank", value: 3200.00, type: "débito" },
   { id: 5, name: "Inter", value: 890.75, type: "crédito" },
-  { id: 6, name: "Santander Free", value: 610.00, type: "débito" }
+  { id: 6, name: "Santander Free", value: 610.00, type: "débito" },
+  { id: 7, name: "Inter", value: 890.75, type: "crédito" },
+  { id: 8, name: "Inter", value: 890.75, type: "crédito" },
+  { id: 9, name: "Inter", value: 890.75, type: "crédito" }
 ];
 
 
@@ -54,17 +57,8 @@ const cards = [
         <div className={styles.page}>
             <main className={styles.main}>
                 <NavBar />
-                <div style={{display: 'flex', gap: 10}}>
-                <ItemList
-                    contents={expensesDaily}
-                    type={'expenses-daily'}
-                    width={'21.5vw'}
-                />
-                <ItemList
-                    contents={expensesMonthly}
-                    type={'expenses-monthly'}
-                    width={'35.7vw'}
-                />
+                <div style={{display: 'flex', gap: 10, justifyContent: 'flex-start'}}>
+                
                 <ItemList
                     contents={cards}
                     type={'cards'}

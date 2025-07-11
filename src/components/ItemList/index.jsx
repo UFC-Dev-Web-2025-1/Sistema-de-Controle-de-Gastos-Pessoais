@@ -15,33 +15,36 @@ export default function ItemList({ contents, type, width }) {
             }}>
                 {contents.map((content) => (
                     <Fragment key={content.id}>
-                    <Item
-                        
-                        name={content.name}
-                        value={content.value}
-                        itemType={'expenses-daily'}
-                    />
-                    <Divider variant="inset" />
+                        <Item
+                            width={width}
+                            name={content.name}
+                            value={content.value}
+                            itemType={'expenses-daily'}
+                        />
+                        <Divider variant="inset" />
                     </Fragment>
                 ))}
-                
+
             </List>
         );
     }
     else if (type === 'expenses-monthly') {
         return (
             <List sx={{
+                display: 'grid',
+                gridTemplateColumns: contents.length > 3 ? '1fr 1fr' : '1fr',
+                gap: '1vh',
                 width: width,
                 height: '5.3vh',
             }}>
-                {contents.map((content) =>(
+                {contents.map((content) => (
                     <Fragment key={content.id}>
-                    <Item
-                        
-                        name={content.name}
-                        value={content.value}
-                        itemType={'expenses-monthly'}
-                    />
+                        <Item
+                            width={width}
+                            name={content.name}
+                            value={content.value}
+                            itemType={'expenses-monthly'}
+                        />
                     </Fragment>
                 ))}
             </List>
@@ -50,11 +53,15 @@ export default function ItemList({ contents, type, width }) {
     else {
         return (
             <List sx={{
+                display: 'grid',
+                gridTemplateColumns: contents.length > 3 ? '1fr 1fr' : '1fr',
+                gap: '1vh',
                 width: width,
                 height: '5.3vh',
             }}>
                 {contents.map((content) => (
                     <Item
+                        width={width}
                         key={content.id}
                         name={content.name}
                         type={content.type}
