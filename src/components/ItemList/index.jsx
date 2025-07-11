@@ -34,7 +34,7 @@ export default function ItemList({ contents, type, width }) {
                 display: 'grid',
                 gridTemplateColumns: contents.length > 3 ? '1fr 1fr' : '1fr',
                 gap: '1vh',
-                width: width,
+                width: contents.length > 3 ? (2 * width) : width,
                 height: '5.3vh',
             }}>
                 {contents.map((content) => (
@@ -53,11 +53,17 @@ export default function ItemList({ contents, type, width }) {
     else {
         return (
             <List sx={{
-                display: 'grid',
-                gridTemplateColumns: contents.length > 3 ? '1fr 1fr' : '1fr',
-                gap: '1vh',
-                width: width,
-                height: '5.3vh',
+                display: 'flex',
+                flexWrap: contents.length > 3 ? 'wrap' : 'nowrap',
+                gap: '1.5vh',
+                justifyContent: 'space-between',
+                width: contents.length > 3 ? (2 * width) : width,
+                height: '17vh',
+                overflowY: 'auto',
+                scrollbarWidth: 'none',
+                '&::-webkit-scrollbar': {
+                    display: 'none'
+                }
             }}>
                 {contents.map((content) => (
                     <Item
