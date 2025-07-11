@@ -1,0 +1,19 @@
+.acesso-rapido-card {
+  width: 18.75rem;
+  max-width: 22rem;
+  background-color: white;
+  border-radius: 0.75rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.botoes-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1.25rem;
+}
+
+.botao-texto {
+  color: black;
+  font-size: 0.875rem;
+}
