@@ -8,7 +8,7 @@ const despesasData = [3000, 2800, 3500, 3300, 4000, 3900, 4200];
 
 const meses = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul'];
 
-export default function LineChart() {
+export default function LineCharts() {
   return (
     <LineChart
       height={300}

@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
-import LineChart from '../LineChart';
-import PieChart from '../PieChart';
+import LineChart from '../LineCharts';
+import PieChart from '../PieCharts';
 import { Typography, Select, MenuItem, Button } from '@mui/material';
 import { Download } from 'lucide-react';
 import './style.css';
