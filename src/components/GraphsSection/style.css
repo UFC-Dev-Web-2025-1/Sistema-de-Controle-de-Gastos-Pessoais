@@ -1,0 +1,35 @@
+.graficos-section {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 70rem;
+  max-width: 70rem;;
+  margin: 2rem;
+  box-shadow: 0 2px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: auto;
+  
+}
+
+.graficos-content {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.graficos-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+.graficos-controls .MuiSelect-root {
+  min-width: 120px;
+}
+
+.graficos-controls .MuiButton-root {
+  min-width: 100px;
+}
