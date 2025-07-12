@@ -16,8 +16,6 @@ export default function PieCharts() {
       ]}
       width={250}
       height={250}
-      legendPosition="right"
-      tooltip
       sx={{
         '& .MuiPieChart-legendLabel': {
           fontWeight: 'bold',
