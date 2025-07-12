@@ -13,12 +13,18 @@ export default function LineCharts() {
     <LineChart
       height={300}
       series={[
-        { data: receitaData, label: 'Receita', color: '#1976d2' },  
+        { data: receitaData, label: 'Receita', color: '#1976d2' },
         { data: despesasData, label: 'Despesas', color: '#d32f2f' },
       ]}
       xAxis={[{ scaleType: 'point', data: meses }]}
       yAxis={[{ width: 50 }]}
       margin={margin}
+      sx={{
+        '& .MuiChartsLegend-label': {
+          fontSize: '1rem',
+          fontWeight: 'medium',
+        },
+      }}
     />
   );
 }
