@@ -3,7 +3,7 @@ import { Card, CardContent, Typography, Box, IconButton } from "@mui/material";
 import { Add, Remove } from "@mui/icons-material";
 import "./style.css";
 
-export default function AcessoRapidoCard() {
+export default function QuickAccess() {
     return (
         <Card className="acesso-rapido-card">
             <CardContent>
