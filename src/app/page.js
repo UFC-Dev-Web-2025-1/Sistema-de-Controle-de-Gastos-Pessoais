@@ -1,7 +1,9 @@
+import { Grab } from "lucide-react";
 import Item from "../components/Item";
 import NavBar from "../components/NavBar";
+import QuickAccess from "../components/QuickAccess";
+import GraphsSection from "../components/GraphsSection";
 import styles from "./page.module.css";
-
 
 export default function Home() {
     return (
@@ -23,6 +25,9 @@ export default function Home() {
                     name="Uber"
                     value="12,78"
                 />
+                <QuickAccess />
+
+                <GraphsSection />
             </main>
         </div>
     );
