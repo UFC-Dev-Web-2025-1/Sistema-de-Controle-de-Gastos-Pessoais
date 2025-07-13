@@ -1,10 +1,10 @@
 import { CreditCard, BanknoteArrowDown, Pencil, Plane } from "lucide-react";
 import "./style.css";
 import '@fontsource/roboto/400.css';
-import {ListItem, ListItemText, Typography, Divider} from '@mui/material';
+import {ListItem, ListItemText, Typography} from '@mui/material';
 
 
-export default function Item({ name, value, type, itemType }) {
+export default function Item({ name, value, type, itemType, width }) {
 
   let icon = (<CreditCard className="icon" />);
 
@@ -13,7 +13,7 @@ export default function Item({ name, value, type, itemType }) {
       <Typography variant="body1" component='span' sx={{
         display: 'flex',
         margin: 0,
-        marginRight: '0.8vh',
+        width: '8.4vw',        
       }}>{name}</Typography>
       <Typography variant="caption" component='span' sx={{
         display: 'flex',
@@ -24,7 +24,7 @@ export default function Item({ name, value, type, itemType }) {
   );
 
   let detail = (
-    <Typography variant="body1" >
+    <Typography variant="body1" sx={{textAlign:'end',width: '10vw'}} >
       {"R$ " + value}
     </Typography>
   );
@@ -35,7 +35,7 @@ export default function Item({ name, value, type, itemType }) {
       <Typography variant="body1" component='span' sx={{
         display: 'flex',
         margin: 0,
-        marginRight: '0.8vh',
+        width: '8.4vw',
         alignSelf: 'center'
       }}>{name}</Typography>
     );
@@ -76,7 +76,7 @@ export default function Item({ name, value, type, itemType }) {
         display: 'flex',
         paddingRight: '1.3vw',
         paddingLeft: '1.1vw',
-        width: '21.5vw',
+        width: width,
         height: '8vh',
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -105,7 +105,7 @@ export default function Item({ name, value, type, itemType }) {
       display: 'flex',
       paddingRight: '1.3vw',
       paddingLeft: '1.1vw',
-      width: '35.7vw',
+      width: width,
       height: '5.3vh',
       flexDirection: 'row',
       justifyContent: 'space-around',
