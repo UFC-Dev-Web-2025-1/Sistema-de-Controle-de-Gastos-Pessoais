@@ -1,7 +1,9 @@
 import MyCards from "@/components/MyCards";
+import Item from "../components/Item";
 import NavBar from "../components/NavBar";
+import QuickAccess from "../components/QuickAccess";
+import GraphsSection from "../components/GraphsSection";
 import styles from "./page.module.css";
-
 
 export default function Home() {
 
@@ -48,6 +50,9 @@ const expensesMonthly = [
                 
                 <MyCards />
                 
+                <QuickAccess />
+
+                <GraphsSection />
             </main>
         </div>
     );
