@@ -32,9 +32,9 @@ export default function ItemList({ contents, type, width }) {
         return (
             <List sx={{
                 display: 'grid',
-                gridTemplateColumns: contents.length > 3 ? '1fr 1fr' : '1fr',
+                flexDirection: 'column',
                 gap: '1vh',
-                width: contents.length > 3 ? (2 * width) : width,
+                width:width,
                 height: '5.3vh',
             }}>
                 {contents.map((content) => (
@@ -54,10 +54,9 @@ export default function ItemList({ contents, type, width }) {
         return (
             <List sx={{
                 display: 'flex',
-                flexWrap: contents.length > 3 ? 'wrap' : 'nowrap',
+                flexDirection: 'column',
                 gap: '1.5vh',
-                justifyContent: 'space-between',
-                width: contents.length > 3 ? (2 * width) : width,
+                width: width,
                 height: '17vh',
                 overflowY: 'auto',
                 scrollbarWidth: 'none',
