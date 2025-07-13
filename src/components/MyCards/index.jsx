@@ -17,7 +17,7 @@ export default function MyCards()
 
     return (
         <Card sx={{
-            width: '40.62vw',
+            width: '38vw',
             height: '27vh',
             alignSelf: 'flex-end',
         }}>
