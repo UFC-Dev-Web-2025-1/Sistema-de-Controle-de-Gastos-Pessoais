@@ -108,9 +108,15 @@ export default function Item({ name, value, type, itemType, width }) {
       width: width,
       height: '5.3vh',
       flexDirection: 'row',
-      justifyContent: 'space-around',
+      justifyContent: 'space-between',
       color: 'black'
     }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'row',
+        gap: '1vw',
+      }}>
       {icon}
       <ListItemText sx={{
         display: 'flex',
@@ -122,6 +128,7 @@ export default function Item({ name, value, type, itemType, width }) {
       >
         {description}
       </ListItemText>
+      </div>
       {detail}
     </ListItem>
   );

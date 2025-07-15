@@ -34,8 +34,13 @@ export default function ItemList({ contents, type, width }) {
                 display: 'grid',
                 flexDirection: 'column',
                 gap: '1vh',
-                width:width,
-                height: '5.3vh',
+                width: width,
+                height: '17vh',
+                overflowY: 'auto',
+                scrollbarWidth: 'none',
+                '&::-webkit-scrollbar': {
+                    display: 'none'
+                }
             }}>
                 {contents.map((content) => (
                     <Fragment key={content.id}>
