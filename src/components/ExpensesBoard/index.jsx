@@ -14,8 +14,9 @@ import {
   CalendarToday as CalendarIcon
 } from '@mui/icons-material';
 import ItemList from '../ItemList';
+import './style.css';
 
-const ExpensesBoard = ({ width, items = [] }) => {
+const ExpensesBoard = ({height, width, items = []}) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   // Usar os items passados como prop
@@ -51,11 +52,13 @@ const ExpensesBoard = ({ width, items = [] }) => {
         p: 3, 
         borderRadius: 3,
         width: width,
+        height: height,
         mx: 'auto',
         mt: 2,
         backgroundColor: '#fafafa',
-        minHeight: '400px',
-        overflow: 'visible'
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column'
       }}
     >
       {/* Cabeçalho */}
@@ -116,30 +119,12 @@ const ExpensesBoard = ({ width, items = [] }) => {
       />
 
       {/* Lista de Despesas usando ItemList */}
-      <Box sx={{ 
-        width: '100%', 
-        position: 'relative',
-        maxHeight: '400px',
-        overflowY: 'auto',
-        '&::-webkit-scrollbar': {
-          width: '8px',
-        },
-        '&::-webkit-scrollbar-track': {
-          background: '#f1f1f1',
-          borderRadius: '10px',
-        },
-        '&::-webkit-scrollbar-thumb': {
-          background: '#c1c1c1',
-          borderRadius: '10px',
-        },
-        '&::-webkit-scrollbar-thumb:hover': {
-          background: '#a8a8a8',
-        }
-      }}>
+      <Box className="expenses-list-container" sx={{ flex: 1, minHeight: 0 }}>
         <ItemList 
           contents={filteredExpenses}
           type="expenses-daily"
           width="100%"
+          
         />
       </Box>
 

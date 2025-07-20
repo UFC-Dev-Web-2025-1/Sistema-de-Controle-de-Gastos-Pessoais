@@ -37,7 +37,7 @@ export default function Home() {
         value: '120,00'
     },
     {
-        id: 6,
+        id: 10,
         name: 'Lazer',
         value: '300,00'
     },
@@ -68,8 +68,7 @@ export default function Home() {
         <div className={styles.page}>
             <main className={styles.main}>
                 <NavBar />
-                <ExpensesBoard width='74vw' items={expensesDaily}/>
-
+                <ExpensesBoard height ='30vw' width='74vw' items={expensesDaily}/>
                 
             </main>
         </div>

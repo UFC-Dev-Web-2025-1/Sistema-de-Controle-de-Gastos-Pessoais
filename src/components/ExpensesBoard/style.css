@@ -29,6 +29,32 @@
   color: white;
 }
 
+/* Container da lista com scroll customizado */
+.expenses-list-container {
+  width: 100%;
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.expenses-list-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.expenses-list-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.expenses-list-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+.expenses-list-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
 /* Responsividade */
 @media (max-width: 600px) {
   .expenses-board {
