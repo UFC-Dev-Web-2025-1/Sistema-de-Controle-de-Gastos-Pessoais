@@ -1,3 +1,5 @@
+"use client";
+
 import MyCards from "@/components/MyCards";
 import Item from "../components/Item";
 import NavBar from "../components/NavBar";
@@ -28,6 +30,33 @@ export default function Home() {
         id: 4,
         name: 'Contas',
         value: '550,00'
+    },
+    {
+        id: 5,
+        name: 'Transporte',
+        value: '120,00'
+    },
+    {
+        id: 10,
+        name: 'Lazer',
+        value: '300,00'
+    },
+    {
+        id: 6,
+        name: 'Lazer',
+        value: '300,00'
+    }
+    ,
+    {
+        id: 8,
+        name: 'Lazer',
+        value: '300,00'
+    }
+    ,
+    {
+        id: 7,
+        name: 'Lazer',
+        value: '300,00'
     }
 ];
 
