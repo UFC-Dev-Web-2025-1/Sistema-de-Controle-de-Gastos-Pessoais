@@ -26,13 +26,16 @@
     height: 3.4vh;
 }
 
-.navigation p{
+.navigation button{
     width: 11.18vw;
     height: 3.4vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0;
+    border: 0;
+    background-color: #242529 ;
 }
-.navigation p:hover{
+.navigation button:hover{
     background-color: #37393F;
 }
