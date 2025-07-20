@@ -11,7 +11,6 @@ export default function ItemList({ contents, type, width }) {
         return (
             <List sx={{
                 width: width,
-                height: '8vh',
             }}>
                 {contents.map((content) => (
                     <Fragment key={content.id}>
