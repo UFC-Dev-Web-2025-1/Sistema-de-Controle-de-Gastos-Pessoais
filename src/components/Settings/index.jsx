@@ -26,10 +26,10 @@ const listTextStyle = {
 export default function Settings({name, email}) {
   return (
     <Box
-      p={4}
+      p={2}
       mt={4}
       borderRadius={2}
-      width="100%"
+      width="100vw"
       className="settings-container"
       display="flex"
       flexDirection="column"

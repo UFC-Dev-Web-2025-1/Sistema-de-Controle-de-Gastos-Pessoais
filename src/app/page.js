@@ -4,30 +4,16 @@ import NavBar from "../components/NavBar";
 import QuickAccess from "../components/QuickAccess";
 import GraphsSection from "../components/GraphsSection";
 import styles from "./page.module.css";
-
+import Settings from "../components/Settings";
 export default function Home() {
     return (
         <div className={styles.page}>
             <main className={styles.main}>
                 <NavBar />
-                <Item
-                    name="Inter"
-                    value="200,00"
-                    type="crédito"
+                <Settings 
+                name = "Cauã"
+                email = "cauanqx2015@gmail.com"
                 />
-                <Item
-                    itemType="expenses-monthly"
-                    name="Comida"
-                    value="70,00"
-                />
-                <Item
-                    itemType="expenses-daily"
-                    name="Uber"
-                    value="12,78"
-                />
-                <QuickAccess />
-
-                <GraphsSection />
             </main>
         </div>
     );
