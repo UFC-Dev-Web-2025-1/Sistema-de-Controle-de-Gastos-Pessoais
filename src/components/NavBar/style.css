@@ -5,6 +5,7 @@
     margin: 0;
     display: flex;
     justify-content: center;
+    flex-direction: row;
     align-items: flex-end;
     width: 11.94vw;
     height: 5.3vh;

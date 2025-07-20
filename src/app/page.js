@@ -5,6 +5,7 @@ import QuickAccess from "../components/QuickAccess";
 import GraphsSection from "../components/GraphsSection";
 import styles from "./page.module.css";
 import MyExpenses from "@/components/MyExpenses";
+import Login from "@/pages/Login";
 
 export default function Home() {
 
@@ -37,13 +38,7 @@ export default function Home() {
     return (
         <div className={styles.page}>
             <main className={styles.main}>
-                <NavBar />
-                
-                <MyExpenses />
-                
-                <QuickAccess />
-
-                <GraphsSection />
+                <Login />
             </main>
         </div>
     );
