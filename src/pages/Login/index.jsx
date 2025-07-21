@@ -1,5 +1,5 @@
 'use client';
-
+import { useGoogleLogin } from '@react-oauth/google';
 import { Typography, Button, Divider, Box } from "@mui/material";
 import NavBarLogin from "../../components/NavBar/NavBarLogin/NavBarLogin";
 import { useState } from "react";
@@ -31,7 +31,15 @@ export default function Login() {
         setOpenRegister(true);
     }
     const handleCloseRegister = () => setOpenRegister(false);
-
+    const loginGoogle = useGoogleLogin({
+    onSuccess: (tokenResponse) => {
+      alert('Login bem-sucedido!', tokenResponse);
+      // Aqui você pode decodificar o token ou enviar para o backend
+    },
+    onError: () => {
+      console.log('Erro no login');
+    },
+    });
 
     return (
         <Box >
@@ -65,7 +73,9 @@ export default function Login() {
                             '&:hover': {
                                 borderColor: '#4285F4',
                             }
-                        }}>
+                        }}
+                        onClick={() => loginGoogle()}
+                        >
                         Entrar com Google
                     </Button>
                     <Box sx={{
