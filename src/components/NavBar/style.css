@@ -27,6 +27,11 @@
     height: 3.4vh;
 }
 
+.navigation a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .navigation button{
     width: 11.18vw;
     height: 3.4vh;
@@ -35,7 +40,10 @@
     justify-content: center;
     margin: 0;
     border: 0;
-    background-color: #242529 ;
+    background-color: #242529;
+    color: white;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
 }
 .navigation button:hover{
     background-color: #37393F;

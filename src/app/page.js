@@ -66,6 +66,11 @@ export default function Home() {
     return (
         <div className={styles.page}>
             <main className={styles.main}>
+                <NavBar />
+                <h1>Página Inicial</h1>
+                <QuickAccess />
+                <MyCards />
+                <GraphsSection />
             </main>
         </div>
     );

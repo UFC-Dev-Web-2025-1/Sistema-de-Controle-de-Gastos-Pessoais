@@ -1,6 +1,7 @@
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
+import Link from 'next/link';
 import "./style.css";
 
 export default function NavBar()
@@ -16,10 +17,18 @@ export default function NavBar()
                     </div>
 
                     <div className="navigation">
-                        <button>Inicío</button>
-                        <button>Relatório</button>
-                        <button>Despesas</button>
-                        <button>Ajustes</button>
+                        <Link href="/">
+                            <button>Início</button>
+                        </Link>
+                        <Link href="/relatorios">
+                            <button>Relatório</button>
+                        </Link>
+                        <Link href="/despesas">
+                            <button>Despesas</button>
+                        </Link>
+                        <Link href="/ajustes">
+                            <button>Ajustes</button>
+                        </Link>
                     </div>
                     <div className="logo"></div>
                 </Toolbar>
