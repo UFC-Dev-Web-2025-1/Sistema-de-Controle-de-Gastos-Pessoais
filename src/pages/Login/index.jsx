@@ -1,7 +1,16 @@
+'use client';
+import { useGoogleLogin } from '@react-oauth/google';
 import { Typography, Button, Divider, Box } from "@mui/material";
 import NavBarLogin from "../../components/NavBar/NavBarLogin/NavBarLogin";
+import { useState } from "react";
+import LoginModal from "@/components/LoginModal";
+import RegisterModal from "@/components/RegisterModal";
+
 
 export default function Login() {
+
+    const [openLogin, setOpenLogin] = useState(false);
+    const [openRegister, setOpenRegister] = useState(false);
 
     const GoogleIcon = (
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18" height="18" viewBox="0 0 48 48">
@@ -13,6 +22,24 @@ export default function Login() {
             <path d="M240-520q-83 0-141.5-58.5T40-720q0-84 58.5-142T240-920q84 0 142 58t58 142q0 83-58 141.5T240-520Zm0-60q59.5 0 99.75-40.83Q380-661.67 380-720q0-59.5-40.25-99.75T240-860q-58.33 0-99.17 40.25Q100-779.5 100-720q0 58.33 40.83 99.17Q181.67-580 240-580ZM620-40q-24.75 0-42.37-17.63Q560-75.25 560-100v-240q0-24.75 17.63-42.38Q595.25-400 620-400h240q24.75 0 42.38 17.62Q920-364.75 920-340v240q0 24.75-17.62 42.37Q884.75-40 860-40H620Zm0-60h240v-240H620v240Zm120-120ZM240-720Zm475 48L288-246q7 12 10.5 25.65Q302-206.7 302-192q0 45-32 77.5T192.05-82Q147-82 114.5-114.5T82-192.05Q82-238 114.5-270t77.5-32q14.7 0 28.35 3.5Q234-295 246-288l426-427q-7-12-10.5-25.5T658-768q0-46 32.5-78t77.55-32Q814-878 846-846t32 77.95q0 45.05-32 77.55T768-658q-14 0-27.5-3.5T715-672Z" />
         </svg>
     );
+
+    const handleOpenLogin = () => setOpenLogin(true);
+    const handleCloseLogin = () => setOpenLogin(false);
+    const handleOpenRegister = (e) => {
+        e.preventDefault();
+        setOpenLogin(false);
+        setOpenRegister(true);
+    }
+    const handleCloseRegister = () => setOpenRegister(false);
+    const loginGoogle = useGoogleLogin({
+    onSuccess: (tokenResponse) => {
+      alert('Login bem-sucedido!', tokenResponse);
+      // Aqui você pode decodificar o token ou enviar para o backend
+    },
+    onError: () => {
+      console.log('Erro no login');
+    },
+    });
 
     return (
         <Box >
@@ -46,7 +73,9 @@ export default function Login() {
                             '&:hover': {
                                 borderColor: '#4285F4',
                             }
-                        }}>
+                        }}
+                        onClick={() => loginGoogle()}
+                        >
                         Entrar com Google
                     </Button>
                     <Box sx={{
@@ -76,12 +105,21 @@ export default function Login() {
                             '&:hover': {
                                 borderColor: '#4285F4',
                             }
-                        }}>
+                        }}
+                        onClick={handleOpenLogin}>
                         Entrar
                     </Button>
-
                 </Box>
             </Box>
+            <LoginModal
+                cancelModal={handleCloseLogin}
+                open={openLogin}
+                handleOpenRegister={handleOpenRegister}
+            /> 
+            <RegisterModal
+                open={openRegister}
+                cancelModal={handleCloseRegister}
+            />
         </Box>
     );
 }

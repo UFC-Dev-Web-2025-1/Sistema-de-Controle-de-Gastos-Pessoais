@@ -1,13 +1,12 @@
-"use client";
-
 import MyCards from "@/components/MyCards";
 import Item from "../components/Item";
 import NavBar from "../components/NavBar";
 import QuickAccess from "../components/QuickAccess";
 import GraphsSection from "../components/GraphsSection";
 import styles from "./page.module.css";
-import Settings from "../components/Settings";
 import MyExpenses from "@/components/MyExpenses";
+import Login from "@/pages/Login";
+
 export default function Home() {
 
     const expensesDaily = [{
@@ -29,33 +28,6 @@ export default function Home() {
         id: 4,
         name: 'Contas',
         value: '550,00'
-    },
-    {
-        id: 5,
-        name: 'Transporte',
-        value: '120,00'
-    },
-    {
-        id: 10,
-        name: 'Lazer',
-        value: '300,00'
-    },
-    {
-        id: 6,
-        name: 'Lazer',
-        value: '300,00'
-    }
-    ,
-    {
-        id: 8,
-        name: 'Lazer',
-        value: '300,00'
-    }
-    ,
-    {
-        id: 7,
-        name: 'Lazer',
-        value: '300,00'
     }
 ];
 
@@ -66,6 +38,7 @@ export default function Home() {
     return (
         <div className={styles.page}>
             <main className={styles.main}>
+                <Login/>
             </main>
         </div>
     );
