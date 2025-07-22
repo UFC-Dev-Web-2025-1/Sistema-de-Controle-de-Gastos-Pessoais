@@ -4,8 +4,30 @@ import Toolbar from '@mui/material/Toolbar';
 import Link from 'next/link';
 import "./style.css";
 
-export default function NavBar()
+export default function NavBar({page})
 {
+    let styleInicio = {backgroundColor: '#242529'};
+    let styleRelatorio = {backgroundColor: '#242529'};
+    let styleDespesas = {backgroundColor: '#242529'};
+    let styleAjustes = {backgroundColor: '#242529'};
+
+    switch(page){
+        case 'inicio':
+            styleInicio = {backgroundColor: '#37393F'};
+            break;
+        case 'relatorio':
+            styleRelatorio = {backgroundColor: '#37393F'};
+            break;
+        case 'despesas':
+            styleDespesas = {backgroundColor: '#37393F'};
+            break;
+        case 'ajustes':
+            styleAjustes = {backgroundColor: '#37393F'};
+            break;
+        default:
+            break;
+    }
+
 
     return(
         <Box>
@@ -18,16 +40,16 @@ export default function NavBar()
 
                     <div className="navigation">
                         <Link href="/">
-                            <button>Início</button>
+                            <button style={styleInicio}>Início</button>
                         </Link>
                         <Link href="/relatorios">
-                            <button>Relatório</button>
+                            <button style={styleRelatorio}>Relatório</button>
                         </Link>
                         <Link href="/despesas">
-                            <button>Despesas</button>
+                            <button style={styleDespesas}>Despesas</button>
                         </Link>
                         <Link href="/ajustes">
-                            <button>Ajustes</button>
+                            <button style={styleAjustes}>Ajustes</button>
                         </Link>
                     </div>
                     <div className="logo"></div>

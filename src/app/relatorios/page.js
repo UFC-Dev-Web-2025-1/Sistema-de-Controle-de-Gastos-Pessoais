@@ -17,7 +17,7 @@ export default function Relatorios() {
     return (
         <div className={styles.page}>
             <main className={styles.main}>
-                <NavBar />
+                <NavBar page='relatorio'/>
                 <GraphsSection data={expensesData} />
             </main>
         </div>

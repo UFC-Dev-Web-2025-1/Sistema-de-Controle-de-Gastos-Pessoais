@@ -8,7 +8,7 @@ export default function Ajustes() {
     return (
         <div className={styles.page}>
             <main className={styles.main}>
-                <NavBar />
+                <NavBar page='ajustes'/>
                 <Settings />
             </main>
         </div>

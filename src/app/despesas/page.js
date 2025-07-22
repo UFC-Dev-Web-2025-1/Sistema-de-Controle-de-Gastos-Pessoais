@@ -39,7 +39,7 @@ export default function Despesas() {
     return (
         <div className={styles.page}>
             <main className={styles.main}>
-                <NavBar />
+                <NavBar page='despesas'/>
                 <ExpensesBoard width='80vw' height='60vh' items={expensesDaily} />
             </main>
         </div>
