@@ -1,11 +1,12 @@
 import MyCards from "@/components/MyCards";
-import Item from "../components/Item";
 import NavBar from "../components/NavBar";
 import QuickAccess from "../components/QuickAccess";
 import GraphsSection from "../components/GraphsSection";
 import styles from "./page.module.css";
+import { Container, LineChart } from "lucide-react";
+import { Paper } from "@mui/material";
 import MyExpenses from "@/components/MyExpenses";
-import Login from "@/pages/Login";
+
 
 export default function Home() {
 
@@ -39,10 +40,18 @@ export default function Home() {
         <div className={styles.page}>
             <main className={styles.main}>
                 <NavBar />
-                <h1>Página Inicial</h1>
-                <QuickAccess />
+                <Paper sx={{
+                    display: 'flex',
+                    justifyContent: 'space-around',
+                    width: '90vw',
+                    height: '36.2vh'
+
+                }}>
+                <MyExpenses />
                 <MyCards />
-                <GraphsSection />
+                <QuickAccess />
+                </Paper>
+                <LineChart/>
             </main>
         </div>
     );

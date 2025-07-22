@@ -17,7 +17,7 @@ export default function MyExpenses()
 
     return (
         <Card sx={{
-            width: '38vw',
+            width: '30vw',
             height: '27vh',
             alignSelf: 'flex-end',
         }}>
@@ -34,7 +34,7 @@ export default function MyExpenses()
                 <ItemList
                 type='expenses-monthly'
                 contents={expensesMonthly}
-                width='35.7vw'
+                width='28.7vw'
                 />
             </CardContent>
 
