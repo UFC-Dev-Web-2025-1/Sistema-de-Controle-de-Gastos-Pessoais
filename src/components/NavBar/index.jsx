@@ -39,7 +39,7 @@ export default function NavBar({page})
                     </div>
 
                     <div className="navigation">
-                        <Link href="/">
+                        <Link href="/inicio">
                             <button style={styleInicio}>Início</button>
                         </Link>
                         <Link href="/relatorios">
