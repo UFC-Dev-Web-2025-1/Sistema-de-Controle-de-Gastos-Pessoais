@@ -29,11 +29,11 @@ export default function Settings({name, email}) {
     <Paper
       elevation={3}
       sx={{
+        marginTop: 0, 
         p: 3,
-        mt: 4,
+        mt: 0,
         borderRadius: 3,
-        width: "20vw",
-        maxWidth: "80vw",
+        width: "80vw",
         mx: "auto",
         backgroundColor: '#fafafa'
       }}

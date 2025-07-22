@@ -3,9 +3,10 @@ import NavBar from "../components/NavBar";
 import QuickAccess from "../components/QuickAccess";
 import GraphsSection from "../components/GraphsSection";
 import styles from "./page.module.css";
-import { Container, LineChart } from "lucide-react";
-import { Paper } from "@mui/material";
+import LineCharts from "@/components/LineCharts";
+import { Box, Paper } from "@mui/material";
 import MyExpenses from "@/components/MyExpenses";
+import OverviewSection from "@/components/OverviewSection";
 
 
 export default function Home() {
@@ -40,18 +41,25 @@ export default function Home() {
         <div className={styles.page}>
             <main className={styles.main}>
                 <NavBar />
+                <OverviewSection />
                 <Paper sx={{
                     display: 'flex',
                     justifyContent: 'space-around',
                     width: '90vw',
-                    height: '36.2vh'
-
+                    height: '36.2vh',
+                    alignItems: 'center',
                 }}>
                 <MyExpenses />
                 <MyCards />
                 <QuickAccess />
                 </Paper>
-                <LineChart/>
+                <Box component='span'
+                sx={{
+                    width: '90vw',
+                    height: '24.4vh'
+                }}>
+                <LineCharts/>
+                </Box>
             </main>
         </div>
     );

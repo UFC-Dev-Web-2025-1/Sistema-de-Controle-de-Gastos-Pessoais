@@ -1,7 +1,7 @@
 'use client';
 import { useGoogleLogin } from '@react-oauth/google';
 import { Typography, Button, Divider, Box } from "@mui/material";
-import NavBarLogin from "../../components/NavBar/NavBarLogin/NavBarLogin";
+import NavBarLogin from "../NavBar/NavBarLogin/NavBarLogin";
 import { useState } from "react";
 import LoginModal from "@/components/LoginModal";
 import RegisterModal from "@/components/RegisterModal";

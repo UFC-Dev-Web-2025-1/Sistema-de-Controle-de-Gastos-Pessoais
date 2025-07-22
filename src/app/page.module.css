@@ -5,9 +5,15 @@
 
     --button-primary-hover: #383838;
     --button-secondary-hover: #f2f2f2;
+    margin-top: 10vh;
+}
+.main {
     display: flex;
+    width: 100vw;
+    height: 100vh;
     flex-direction: column;
-    margin-top: 5vh;
+    gap: 2vh;
+    align-items: center;
 }
 
 @media (prefers-color-scheme: dark) {

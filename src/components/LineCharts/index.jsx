@@ -20,6 +20,7 @@ export default function LineCharts() {
       yAxis={[{ width: 50 }]}
       margin={margin}
       sx={{
+        mt: 0,
         '& .MuiChartsLegend-label': {
           fontSize: '1rem',
           fontWeight: 'medium',

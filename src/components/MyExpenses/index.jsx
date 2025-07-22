@@ -18,8 +18,7 @@ export default function MyExpenses()
     return (
         <Card sx={{
             width: '30vw',
-            height: '27vh',
-            alignSelf: 'flex-end',
+            height: '27vh'
         }}>
             <CardContent sx={{
                 display: 'flex',
