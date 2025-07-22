@@ -5,46 +5,63 @@ import "./style.css";
 
 export default function QuickAccess() {
     return (
-        <Card className="acesso-rapido-card">
-            <CardContent>
-                <Typography
-                    sx={{
-                        fontFamily: 'Roboto, sans-serif',
-                        fontWeight: 500,
-                        fontSize: '1.56rem',
-                        color: 'black',
-                        marginBottom: '1.9rem'
-                    }}
-                >
-                    Acesso Rápido
-                </Typography>
+        <Card
+  className="acesso-rapido-card"
+  sx={{
+    height: '21.5vh',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+  }}
+>
+  <CardContent
+    sx={{
+      paddingTop: 0, // <-- remove espaço extra no topo
+      paddingLeft: 0,
+      paddingRight: 0,
+      paddingBottom: 0,
+    }}
+  >
+    <Typography
+      variant="h5"
+      component="div"
+      sx={{
+        paddingLeft: '1vw', // você pode manter esse se quiser recuo lateral
+        marginTop: 0,
+      }}
+    >
+      Acesso Rápido
+    </Typography>
 
-                <Box className="botoes-container">
-                    <Box >
-                        <IconButton
-                            sx={{
-                                backgroundColor: '#f0f0f0',
-                                color: 'black',
-                                marginBottom: '0.5rem'
-                            }}>
-                            <Add />
-                        </IconButton>
-                        <Typography className="botao-texto">Receita</Typography>
-                    </Box>
+    <Box className="botoes-container">
+      <Box>
+        <IconButton
+          sx={{
+            backgroundColor: '#f0f0f0',
+            color: 'black',
+            marginBottom: '0.5rem',
+          }}
+        >
+          <Add />
+        </IconButton>
+        <Typography className="botao-texto">Receita</Typography>
+      </Box>
 
-                    <Box >
-                        <IconButton
-                            sx={{
-                                backgroundColor: '#f0f0f0',
-                                color: 'black',
-                                marginBottom: '0.5rem'
-                            }}>
-                            <Remove />
-                        </IconButton>
-                        <Typography className="botao-texto">Despesas</Typography>
-                    </Box>
-                </Box>
-            </CardContent>
-        </Card>
+      <Box>
+        <IconButton
+          sx={{
+            backgroundColor: '#f0f0f0',
+            color: 'black',
+            marginBottom: '0.5rem',
+          }}
+        >
+          <Remove />
+        </IconButton>
+        <Typography className="botao-texto">Despesas</Typography>
+      </Box>
+    </Box>
+  </CardContent>
+</Card>
+
     );
 }
