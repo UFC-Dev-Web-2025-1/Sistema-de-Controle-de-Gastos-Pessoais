@@ -1,5 +1,7 @@
 import { Box, TextField, Button, Typography, Modal, Fade } from "@mui/material";
 import { useState } from "react";
+import Link from 'next/link';
+
 export default function LoginModal({ open, cancelModal }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -96,7 +98,7 @@ export default function LoginModal({ open, cancelModal }) {
                                 height: '9.5vh'
                             }}
                         />
-
+                        <Link href='/'>
                         <Button type='submit'
                         sx={{
                             width: '50vw',
@@ -107,6 +109,7 @@ export default function LoginModal({ open, cancelModal }) {
                         >
                             Criar
                         </Button>
+                        </Link>
                     </Box>
                 </Fade>
             </Modal>
