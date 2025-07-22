@@ -18,14 +18,14 @@ export default function MyCards()
     return (
         <Card sx={{
             width: '30vw',
-            height: '27vh'
+            height: '21.5vh'
         }}>
             <CardContent sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center'
             }}>
-                <Typography variant='h6' component='div' sx={{
+                <Typography variant='h5' component='div' sx={{
                     paddingLeft: '1vw'
                 }}>
                     Meus Cartões

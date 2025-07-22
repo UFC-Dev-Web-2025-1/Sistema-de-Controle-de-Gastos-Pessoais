@@ -3,11 +3,11 @@ import { Card, CardContent, Typography } from '@mui/material';
 import { DollarSign, BanknoteArrowUp, BanknoteArrowDown } from 'lucide-react';
 import './style.css';
 
-export default function FinancialCard({ title, value, iconName, iconSize = 24 }) {
+export default function FinancialCard({ title, value, iconName, iconSize = 30 }) {
   const icons = {
-    BanknoteArrowUp: <BanknoteArrowUp size={iconSize} />,
-    BanknoteArrowDown: <BanknoteArrowDown size={iconSize} />,
-    DollarSign: <DollarSign size={iconSize} />
+    BanknoteArrowUp: <BanknoteArrowUp size={iconSize} strokeWidth={1} />,
+    BanknoteArrowDown: <BanknoteArrowDown size={iconSize} strokeWidth={1} />,
+    DollarSign: <DollarSign size={iconSize} strokeWidth={1} />
   };
 
   return (
