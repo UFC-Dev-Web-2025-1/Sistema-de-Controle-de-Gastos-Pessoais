@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
-import LineChart from '../LineCharts';
-import PieChart from '../PieCharts';
+import LineCharts from '../LineCharts';
+import PieCharts from '../PieCharts';
 import { Typography, Select, MenuItem, Button } from '@mui/material';
 import { Download } from 'lucide-react';
 import './style.css';
@@ -23,8 +23,8 @@ export default function GraphsSection() {
             </Typography>
 
             <div className="graficos-content">
-                <LineChart />
-                <PieChart />
+                <LineCharts />
+                <PieCharts />
             </div>
 
             <div className="graficos-controls">

@@ -9,6 +9,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  Paper,
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 
@@ -25,16 +26,24 @@ const listTextStyle = {
 
 export default function Settings({name, email}) {
   return (
-    <Box
-      p={2}
-      mt={4}
-      borderRadius={2}
-      width="100vw"
-      className="settings-container"
-      display="flex"
-      flexDirection="column"
-      alignItems="flex-start"
+    <Paper
+      elevation={3}
+      sx={{
+        marginTop: 0, 
+        p: 3,
+        mt: 0,
+        borderRadius: 3,
+        width: "80vw",
+        mx: "auto",
+        backgroundColor: '#fafafa'
+      }}
     >
+      <Box
+        className="settings-container"
+        display="flex"
+        flexDirection="column"
+        alignItems="flex-start"
+      >
       {/* Título */}
       <Typography variant="h5" fontWeight="bold" gutterBottom color="text.primary">
         Ajustes
@@ -95,6 +104,7 @@ export default function Settings({name, email}) {
           <ListItemText primary="Fale conosco" {...listTextStyle}/>
         </ListItem>
       </List>
-    </Box>
+      </Box>
+    </Paper>
   );
 }

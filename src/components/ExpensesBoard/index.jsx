@@ -54,7 +54,7 @@ const ExpensesBoard = ({height, width, items = []}) => {
         width: width,
         height: height,
         mx: 'auto',
-        mt: 2,
+        mt: 0,
         backgroundColor: '#fafafa',
         overflow: 'hidden',
         display: 'flex',

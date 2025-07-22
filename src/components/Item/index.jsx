@@ -6,7 +6,7 @@ import {ListItem, ListItemText, Typography} from '@mui/material';
 
 export default function Item({ name, value, type, itemType, width }) {
 
-  let icon = (<CreditCard className="icon" />);
+  let icon = (<CreditCard className="icon" strokeWidth={1} />);
 
   let description = (
     <>
@@ -30,7 +30,7 @@ export default function Item({ name, value, type, itemType, width }) {
   );
 
   if (itemType == 'expenses-monthly') {
-    icon = (<BanknoteArrowDown className="icon" />);
+    icon = (<BanknoteArrowDown className="icon" strokeWidth={1} />);
     description = (
       <Typography variant="body1" component='span' sx={{
         display: 'flex',
@@ -45,7 +45,8 @@ export default function Item({ name, value, type, itemType, width }) {
   if (itemType == 'expenses-daily') {
     icon = (<Plane style={{
         width: '1.7vw',
-        height: '4vh'
+        height: '4vh',
+        strokeWidth: 1
       }} />);
 
     description = (
@@ -66,7 +67,8 @@ export default function Item({ name, value, type, itemType, width }) {
     detail = (
       <Pencil style={{
         width: '1.7vw',
-        height: '4vh'
+        height: '4vh',
+        strokeWidth: 1
       }} />
     );
 

@@ -1,5 +1,7 @@
-import { Box, TextField, Button, Typography, Link, Modal, Fade } from "@mui/material";
+import { Box, TextField, Button, Typography, Modal, Fade } from "@mui/material";
 import { useState } from "react";
+import Link from "next/link";
+
 export default function LoginModal({ open, cancelModal, handleOpenRegister }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -83,9 +85,9 @@ export default function LoginModal({ open, cancelModal, handleOpenRegister }) {
                         />
 
                         <Typography variant="body1" sx={{ color: '#202020' }}>
-                            Não tem uma conta? <Link href='#'  onClick={handleOpenRegister} underline='hover'>Inscreva-se</Link>
+                            Não tem uma conta? <a href='#'  onClick={handleOpenRegister} style={{textDecoration: 'underline'}}>Inscreva-se</a>
                         </Typography>
-
+                        <Link href='/inicio'>
                         <Button type='submit'
                             sx={{
                                 width: '50vw',
@@ -96,6 +98,7 @@ export default function LoginModal({ open, cancelModal, handleOpenRegister }) {
                         >
                             Entrar
                         </Button>
+                        </Link>
                     </Box>
                 </Fade>
                 

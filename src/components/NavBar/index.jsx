@@ -1,10 +1,33 @@
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
+import Link from 'next/link';
 import "./style.css";
 
-export default function NavBar()
+export default function NavBar({page})
 {
+    let styleInicio = {backgroundColor: '#242529'};
+    let styleRelatorio = {backgroundColor: '#242529'};
+    let styleDespesas = {backgroundColor: '#242529'};
+    let styleAjustes = {backgroundColor: '#242529'};
+
+    switch(page){
+        case 'inicio':
+            styleInicio = {backgroundColor: '#37393F'};
+            break;
+        case 'relatorio':
+            styleRelatorio = {backgroundColor: '#37393F'};
+            break;
+        case 'despesas':
+            styleDespesas = {backgroundColor: '#37393F'};
+            break;
+        case 'ajustes':
+            styleAjustes = {backgroundColor: '#37393F'};
+            break;
+        default:
+            break;
+    }
+
 
     return(
         <Box>
@@ -16,10 +39,18 @@ export default function NavBar()
                     </div>
 
                     <div className="navigation">
-                        <button>Inicío</button>
-                        <button>Relatório</button>
-                        <button>Despesas</button>
-                        <button>Ajustes</button>
+                        <Link href="/inicio">
+                            <button style={styleInicio}>Início</button>
+                        </Link>
+                        <Link href="/relatorios">
+                            <button style={styleRelatorio}>Relatório</button>
+                        </Link>
+                        <Link href="/despesas">
+                            <button style={styleDespesas}>Despesas</button>
+                        </Link>
+                        <Link href="/ajustes">
+                            <button style={styleAjustes}>Ajustes</button>
+                        </Link>
                     </div>
                     <div className="logo"></div>
                 </Toolbar>

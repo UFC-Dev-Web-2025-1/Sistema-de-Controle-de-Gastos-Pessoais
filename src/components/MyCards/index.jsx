@@ -17,16 +17,15 @@ export default function MyCards()
 
     return (
         <Card sx={{
-            width: '38vw',
-            height: '27vh',
-            alignSelf: 'flex-end',
+            width: '30vw',
+            height: '21.5vh'
         }}>
             <CardContent sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center'
             }}>
-                <Typography variant='h6' component='div' sx={{
+                <Typography variant='h5' component='div' sx={{
                     paddingLeft: '1vw'
                 }}>
                     Meus Cartões
@@ -34,7 +33,7 @@ export default function MyCards()
                 <ItemList
                 type='cards'
                 contents={cards}
-                width='35.7vw'
+                width='28.7vw'
                 />
             </CardContent>
 

@@ -1,11 +1,11 @@
 'use client';
 import { useGoogleLogin } from '@react-oauth/google';
 import { Typography, Button, Divider, Box } from "@mui/material";
-import NavBarLogin from "../../components/NavBar/NavBarLogin/NavBarLogin";
+import NavBarLogin from "../NavBar/NavBarLogin/NavBarLogin";
 import { useState } from "react";
 import LoginModal from "@/components/LoginModal";
 import RegisterModal from "@/components/RegisterModal";
-
+import Link from 'next/link';
 
 export default function Login() {
 
@@ -42,7 +42,7 @@ export default function Login() {
     });
 
     return (
-        <Box >
+        <Box>
             <NavBarLogin />
             <Box sx={{
                 height: '50vh',
@@ -51,7 +51,8 @@ export default function Login() {
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 margin: 0,
-                padding: 0
+                padding: 0,
+                marginTop: '15vh'
 
             }}>
                 <Typography variant="h2" sx={{ color: '#202020' }}>
@@ -61,6 +62,7 @@ export default function Login() {
                     Inscreva-se agora
                 </Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <Link href='/inicio'>
                     <Button startIcon={GoogleIcon}
                         sx={{
                             border: '1px solid #747775',
@@ -78,6 +80,7 @@ export default function Login() {
                         >
                         Entrar com Google
                     </Button>
+                    </Link>
                     <Box sx={{
                         display: 'flex',
                         flexDirection: 'row',
