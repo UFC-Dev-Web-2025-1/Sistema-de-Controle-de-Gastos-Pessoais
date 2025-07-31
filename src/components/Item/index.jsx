@@ -25,7 +25,7 @@ export default function Item({ name, value, type, itemType, width }) {
 
   let detail = (
     <Typography variant="body1" sx={{textAlign:'end',width: '10vw'}} >
-      {"R$ " + value}
+      {"R$ " + value.toLocaleString('pt-br', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
     </Typography>
   );
 
@@ -60,7 +60,7 @@ export default function Item({ name, value, type, itemType, width }) {
           display: 'flex',
           marginTop: '-0.6vh',
           marginBottom: 0
-        }}>{'R$ ' + value}</Typography>
+        }}>{'R$ ' + value.toLocaleString('pt-br', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</Typography>
       </>
     );
 
@@ -88,10 +88,10 @@ export default function Item({ name, value, type, itemType, width }) {
           {icon}
           <ListItemText sx={{
             display: 'flex',
-            justifyContent: 'center',
             alignItems: 'center',
             width: '8.4vw',
             height: '5.3vh',
+            paddingLeft: '2vw'
           }}
           >
             {description}
@@ -111,7 +111,7 @@ export default function Item({ name, value, type, itemType, width }) {
       height: '5.3vh',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      color: 'black'
+      color: 'black',
     }}>
       <div style={{
         display: 'flex',
@@ -122,10 +122,10 @@ export default function Item({ name, value, type, itemType, width }) {
       {icon}
       <ListItemText sx={{
         display: 'flex',
-        justifyContent: 'center',
         alignItems: 'center',
         width: '8.4vw',
         height: '5.3vh',
+        paddingLeft: '0.2vw'
       }}
       >
         {description}
