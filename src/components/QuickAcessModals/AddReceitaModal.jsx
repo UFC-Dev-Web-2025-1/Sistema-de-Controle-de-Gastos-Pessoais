@@ -12,7 +12,7 @@ export default function AddReceitaModal({ open, onClose, onAddReceita }) {
     onAddReceita({
       id: Date.now(),
       name: nome,
-      value: float(valor)
+      value: parseFloat(valor)
     });
 
 

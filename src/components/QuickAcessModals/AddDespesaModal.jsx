@@ -8,18 +8,20 @@ export default function AddDespesaModal({ open, onClose, onAddDespesa }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-
-    onAddDespesa({
+    const novaDespesa = {
       id: Date.now(),
       name: nome,
-      value: float(valor)
-    });
+      value: parseFloat(valor),
+    };
 
+    onAddDespesa(novaDespesa);
 
     setNome('');
     setValor('');
+
     onClose();
   };
+
 
   return (
     <Modal open={open} onClose={onClose}>
