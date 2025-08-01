@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cartaos",
+  "info": {
+    "singularName": "cartao",
+    "pluralName": "cartaos",
+    "displayName": "cartão"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string"
+    },
+    "Tipo": {
+      "type": "boolean"
+    },
+    "saldo": {
+      "type": "decimal"
+    },
+    "limite": {
+      "type": "decimal"
+    }
+  }
+}

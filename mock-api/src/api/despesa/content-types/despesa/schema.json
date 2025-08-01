@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "despesas",
+  "info": {
+    "singularName": "despesa",
+    "pluralName": "despesas",
+    "displayName": "despesas"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "valor": {
+      "type": "decimal"
+    },
+    "nome": {
+      "type": "string"
+    },
+    "data": {
+      "type": "datetime"
+    },
+    "descricao": {
+      "type": "string"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "despesas"
+    }
+  }
+}
