@@ -99,13 +99,6 @@ const ExpensesBoard = ({height, width, items = []}) => {
         size="medium"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <SearchIcon color="action" />
-            </InputAdornment>
-          ),
-        }}
         sx={{
           mb: 3,
           '& .MuiOutlinedInput-root': {

@@ -44,7 +44,20 @@ export default function QuickAccess() {
         >
           <Add />
         </IconButton>
-        <Typography className="botao-texto">Receita</Typography>
+        <Typography className="botao-texto">Receitas</Typography>
+      </Box>
+
+      <Box>
+        <IconButton
+          sx={{
+            backgroundColor: '#f0f0f0',
+            color: 'black',
+            marginBottom: '0.5rem',
+          }}
+        >
+          <Add />
+        </IconButton>
+        <Typography className="botao-texto">Cartões</Typography>
       </Box>
 
       <Box>

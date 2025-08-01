@@ -1,4 +1,4 @@
-import { CreditCard, BanknoteArrowDown, Pencil, Plane } from "lucide-react";
+import { CreditCard, BanknoteArrowDown, Pencil, Plane, Hamburger, FileText, ShoppingCart } from "lucide-react";
 import "./style.css";
 import '@fontsource/roboto/400.css';
 import {ListItem, ListItemText, Typography} from '@mui/material';
@@ -25,12 +25,27 @@ export default function Item({ name, value, type, itemType, width }) {
 
   let detail = (
     <Typography variant="body1" sx={{textAlign:'end',width: '10vw'}} >
-      {"R$ " + value}
+      {"R$ " + value.toLocaleString('pt-br', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
     </Typography>
   );
 
   if (itemType == 'expenses-monthly') {
-    icon = (<BanknoteArrowDown className="icon" strokeWidth={1} />);
+    switch(name.toLowerCase()){
+      case 'viagem':
+        icon = (<Plane className="icon" strokeWidth={1} />);
+        break;
+      case 'compras':
+        icon = (<ShoppingCart className="icon" strokeWidth={1} />);
+        break;
+      case 'comida':
+        icon = (<Hamburger className="icon" strokeWidth={1} />);
+        break;
+      case 'conta':
+        icon = (<FileText className="icon" strokeWidth={1} />);
+        break;
+      default:
+        icon = (<BanknoteArrowDown className="icon" strokeWidth={1} />);
+    }
     description = (
       <Typography variant="body1" component='span' sx={{
         display: 'flex',
@@ -43,11 +58,42 @@ export default function Item({ name, value, type, itemType, width }) {
 
 
   if (itemType == 'expenses-daily') {
-    icon = (<Plane style={{
+    switch(name.toLowerCase()){
+      case 'viagem':
+        icon = (<Plane style={{
         width: '1.7vw',
         height: '4vh',
         strokeWidth: 1
-      }} />);
+        }} />);
+        break;
+      case 'compras':
+        icon = (<ShoppingCart style={{
+        width: '1.7vw',
+        height: '4vh',
+        strokeWidth: 1
+        }} />);
+        break;
+      case 'comida':
+        icon = (<Hamburger style={{
+        width: '1.7vw',
+        height: '4vh',
+        strokeWidth: 1
+        }} />);
+        break;
+      case 'conta':
+        icon = (<FileText style={{
+        width: '1.7vw',
+        height: '4vh',
+        strokeWidth: 1
+        }} />);
+        break;
+      default:
+        icon = (<BanknoteArrowDown style={{
+        width: '1.7vw',
+        height: '4vh',
+        strokeWidth: 1
+        }} />);
+    }
 
     description = (
       <>
@@ -60,7 +106,7 @@ export default function Item({ name, value, type, itemType, width }) {
           display: 'flex',
           marginTop: '-0.6vh',
           marginBottom: 0
-        }}>{'R$ ' + value}</Typography>
+        }}>{'R$ ' + value.toLocaleString('pt-br', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</Typography>
       </>
     );
 
@@ -88,10 +134,10 @@ export default function Item({ name, value, type, itemType, width }) {
           {icon}
           <ListItemText sx={{
             display: 'flex',
-            justifyContent: 'center',
             alignItems: 'center',
             width: '8.4vw',
             height: '5.3vh',
+            paddingLeft: '2vw'
           }}
           >
             {description}
@@ -111,7 +157,7 @@ export default function Item({ name, value, type, itemType, width }) {
       height: '5.3vh',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      color: 'black'
+      color: 'black',
     }}>
       <div style={{
         display: 'flex',
@@ -122,10 +168,10 @@ export default function Item({ name, value, type, itemType, width }) {
       {icon}
       <ListItemText sx={{
         display: 'flex',
-        justifyContent: 'center',
         alignItems: 'center',
         width: '8.4vw',
         height: '5.3vh',
+        paddingLeft: '0.2vw'
       }}
       >
         {description}
