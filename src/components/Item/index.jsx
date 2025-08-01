@@ -1,4 +1,4 @@
-import { CreditCard, BanknoteArrowDown, Pencil, Plane } from "lucide-react";
+import { CreditCard, BanknoteArrowDown, Pencil, Plane, Hamburger, FileText, ShoppingCart } from "lucide-react";
 import "./style.css";
 import '@fontsource/roboto/400.css';
 import {ListItem, ListItemText, Typography} from '@mui/material';
@@ -30,7 +30,22 @@ export default function Item({ name, value, type, itemType, width }) {
   );
 
   if (itemType == 'expenses-monthly') {
-    icon = (<BanknoteArrowDown className="icon" strokeWidth={1} />);
+    switch(name.toLowerCase()){
+      case 'viagem':
+        icon = (<Plane className="icon" strokeWidth={1} />);
+        break;
+      case 'compras':
+        icon = (<ShoppingCart className="icon" strokeWidth={1} />);
+        break;
+      case 'comida':
+        icon = (<Hamburger className="icon" strokeWidth={1} />);
+        break;
+      case 'conta':
+        icon = (<FileText className="icon" strokeWidth={1} />);
+        break;
+      default:
+        icon = (<BanknoteArrowDown className="icon" strokeWidth={1} />);
+    }
     description = (
       <Typography variant="body1" component='span' sx={{
         display: 'flex',
@@ -43,11 +58,42 @@ export default function Item({ name, value, type, itemType, width }) {
 
 
   if (itemType == 'expenses-daily') {
-    icon = (<Plane style={{
+    switch(name.toLowerCase()){
+      case 'viagem':
+        icon = (<Plane style={{
         width: '1.7vw',
         height: '4vh',
         strokeWidth: 1
-      }} />);
+        }} />);
+        break;
+      case 'compras':
+        icon = (<ShoppingCart style={{
+        width: '1.7vw',
+        height: '4vh',
+        strokeWidth: 1
+        }} />);
+        break;
+      case 'comida':
+        icon = (<Hamburger style={{
+        width: '1.7vw',
+        height: '4vh',
+        strokeWidth: 1
+        }} />);
+        break;
+      case 'conta':
+        icon = (<FileText style={{
+        width: '1.7vw',
+        height: '4vh',
+        strokeWidth: 1
+        }} />);
+        break;
+      default:
+        icon = (<BanknoteArrowDown style={{
+        width: '1.7vw',
+        height: '4vh',
+        strokeWidth: 1
+        }} />);
+    }
 
     description = (
       <>
