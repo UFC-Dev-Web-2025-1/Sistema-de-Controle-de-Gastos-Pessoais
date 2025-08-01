@@ -3,21 +3,21 @@ import React from "react";
 import DashboardCards from "@/components/FinancialCard";
 import "./style.css";
 
-export default function OverviewSection() {
+export default function OverviewSection({ totalReceitas, totalDespesas, totalSaldo }) {
     const cardsData = [
         {
             icon: "BanknoteArrowUp",
-            value: "R$20.000,00",
+            value: totalReceitas.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
             label: "Receitas",
         },
         {
             icon: "BanknoteArrowDown",
-            value: "R$5.000,00",
+            value: totalDespesas.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
             label: "Despesas",
         },
         {
             icon: "DollarSign",
-            value: "R$15.000,00",
+            value: totalSaldo.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
             label: "Saldo",
         },
     ];
