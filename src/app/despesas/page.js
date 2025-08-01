@@ -19,9 +19,6 @@ export default function Despesas() {
             id: item.id,
             name: item.attributes?.nome || item.nome || 'Sem nome',
             value: item.attributes?.valor || item.valor || '0,00',
-            category: item.attributes?.categoria || item.categoria || 'Outros',
-            date: item.attributes?.data || item.data || new Date().toISOString(),
-            description: item.attributes?.descricao || item.descricao || ''
         }));
     };
 

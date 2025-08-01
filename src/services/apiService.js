@@ -11,11 +11,15 @@ class ApiService {
   async request(endpoint, options = {}) {
     const url = `${this.baseURL}${endpoint}`;
     
+    // Obter token do usuário logado (se existir)
+    const userToken = typeof window !== 'undefined' ? localStorage.getItem('authToken') : null;
+    
     const config = {
       headers: {
         'Content-Type': 'application/json',
-        // Adicionar o token de autorização se existir
-        ...(this.token && { 'Authorization': `Bearer ${this.token}` }),
+        // Priorizar token do usuário, depois token da API
+        ...(userToken && { 'Authorization': `Bearer ${userToken}` }),
+        ...(!userToken && this.token && { 'Authorization': `Bearer ${this.token}` }),
       },
       ...options,
     };

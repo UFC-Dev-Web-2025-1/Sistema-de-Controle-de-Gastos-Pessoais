@@ -14,11 +14,12 @@ export const expensesService = {
   // Criar nova despesa
   async createExpense(expenseData) {
     const newExpense = {
-      nome: expenseData.nome || expenseData.name,
-      valor: expenseData.valor || expenseData.amount,
-      categoria: expenseData.categoria || expenseData.category,
-      data: expenseData.data || expenseData.date || new Date().toISOString(),
-      descricao: expenseData.descricao || expenseData.description || '',
+      nome: expenseData.nome,
+      valor: expenseData.valor,
+      categoria: expenseData.categoria,
+      data: expenseData.data || new Date().toISOString(),
+      descricao: expenseData.descricao || '',
+      cartao: expenseData.cartao || null, // ID do cartão (opcional)
     };
     return await apiService.post('/despesas', newExpense);
   },
@@ -33,13 +34,93 @@ export const expensesService = {
     return await apiService.delete(`/despesas/${id}`);
   },
 
-  // Buscar despesas por categoria
-  async getExpensesByCategory(categoria) {
-    return await apiService.get(`/despesas?filters[categoria][$eq]=${categoria}&populate=*`);
-  },
+
 
   // Buscar despesas por período
   async getExpensesByDateRange(startDate, endDate) {
     return await apiService.get(`/despesas?filters[data][$gte]=${startDate}&filters[data][$lte]=${endDate}&populate=*`);
-  }
+  },
+
+  // Buscar despesas do usuário atual
+  async getCurrentUserExpenses() {
+    return await apiService.get('/despesas?filters[usuario][$eq]=$user&populate=*');
+  },
+
+  // Buscar despesas por usuário específico
+  async getExpensesByUser(userId) {
+    return await apiService.get(`/despesas?filters[usuario][id][$eq]=${userId}&populate=*`);
+  },
+
+  // Buscar despesas por cartão
+  async getExpensesByCard(cardId) {
+    return await apiService.get(`/despesas?filters[cartao][id][$eq]=${cardId}&populate=*`);
+  },
+
+  // Buscar despesas por categoria e usuário
+  async getExpensesByCategoryAndUser(categoria, userId) {
+    return await apiService.get(`/despesas?filters[categoria][$eq]=${categoria}&filters[usuario][id][$eq]=${userId}&populate=*`);
+  },
+
+  // Buscar despesas recorrentes
+  async getRecurringExpenses(userId) {
+    return await apiService.get(`/despesas?filters[usuario][id][$eq]=${userId}&filters[recorrente][$eq]=true&populate=*`);
+  },
+
+  // Calcular total de despesas por período
+  async calculateExpensesTotal(userId, startDate, endDate) {
+    try {
+      const expenses = await apiService.get(`/despesas?filters[usuario][id][$eq]=${userId}&filters[data][$gte]=${startDate}&filters[data][$lte]=${endDate}&populate=*`);
+      
+      const total = expenses.reduce((sum, expense) => {
+        const value = parseFloat(expense.attributes?.valor || expense.valor || 0);
+        return sum + value;
+      }, 0);
+
+      return {
+        total,
+        count: expenses.length,
+        expenses,
+      };
+    } catch (error) {
+      console.error('Erro ao calcular total de despesas:', error);
+      throw error;
+    }
+  },
+
+  // Obter despesas agrupadas por categoria
+  async getExpensesByCategory(userId, startDate = null, endDate = null) {
+    try {
+      let url = `/despesas?filters[usuario][id][$eq]=${userId}&populate=*`;
+      
+      if (startDate && endDate) {
+        url += `&filters[data][$gte]=${startDate}&filters[data][$lte]=${endDate}`;
+      }
+
+      const expenses = await apiService.get(url);
+      
+      const groupedByCategory = {};
+      
+      expenses.forEach(expense => {
+        const categoria = expense.attributes?.categoria || expense.categoria || 'Outros';
+        const valor = parseFloat(expense.attributes?.valor || expense.valor || 0);
+        
+        if (!groupedByCategory[categoria]) {
+          groupedByCategory[categoria] = {
+            total: 0,
+            count: 0,
+            expenses: [],
+          };
+        }
+        
+        groupedByCategory[categoria].total += valor;
+        groupedByCategory[categoria].count += 1;
+        groupedByCategory[categoria].expenses.push(expense);
+      });
+
+      return groupedByCategory;
+    } catch (error) {
+      console.error('Erro ao agrupar despesas por categoria:', error);
+      throw error;
+    }
+  },
 };

@@ -17,12 +17,6 @@
     "nome": {
       "type": "string"
     },
-    "data": {
-      "type": "datetime"
-    },
-    "descricao": {
-      "type": "string"
-    },
     "user": {
       "type": "relation",
       "relation": "manyToOne",

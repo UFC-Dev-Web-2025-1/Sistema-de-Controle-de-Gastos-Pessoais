@@ -71,6 +71,18 @@
       "relation": "oneToMany",
       "target": "api::despesa.despesa",
       "mappedBy": "user"
+    },
+    "cartoes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::cartao.cartao",
+      "mappedBy": "user"
+    },
+    "saldos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::saldo.saldo",
+      "mappedBy": "user"
     }
   }
 }
