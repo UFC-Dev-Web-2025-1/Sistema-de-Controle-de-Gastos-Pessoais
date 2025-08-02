@@ -3,7 +3,8 @@ import {useState} from 'react';
 import NavBar from "../../components/NavBar";
 import GraphsSection from "../../components/GraphsSection";
 import { useApi } from "@/hooks/useApi";
-import { expensesService, balanceService } from "@/services/";
+import { expensesService } from "@/services/expensesService";
+import { balanceService } from "@/services/balanceService";
 import styles from "../page.module.css";
 
 export default function Relatorios() {
