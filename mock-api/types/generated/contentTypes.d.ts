@@ -426,6 +426,7 @@ export interface ApiCartaoCartao extends Struct.CollectionTypeSchema {
     nome: Schema.Attribute.String;
     numero: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
+    tipo: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

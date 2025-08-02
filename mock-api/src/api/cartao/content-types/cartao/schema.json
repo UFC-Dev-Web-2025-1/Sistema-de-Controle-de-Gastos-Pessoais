@@ -28,6 +28,9 @@
     },
     "cvv": {
       "type": "integer"
+    },
+    "tipo": {
+      "type": "string"
     }
   }
 }
