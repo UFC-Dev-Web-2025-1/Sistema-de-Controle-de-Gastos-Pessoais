@@ -1,14 +1,13 @@
 "use client";
-import { useEffect, useState } from 'react';
 import LineCharts from '../LineCharts';
 import PieCharts from '../PieCharts';
 import { Typography, Select, MenuItem, Button } from '@mui/material';
 import { Download } from 'lucide-react';
 import './style.css';
 
-export default function GraphsSection() {
+export default function GraphsSection({expenses, incomes, handleMonth}) {
 
-    const [expenses, setExpenses] = useState([]);
+    
 
     return (
         <div className="graficos-section">
@@ -25,12 +24,12 @@ export default function GraphsSection() {
             </Typography>
 
             <div className="graficos-content">
-                <LineCharts />
-                <PieCharts />
+                <LineCharts expenses={expenses} incomes={incomes}/>
+                <PieCharts expenses={expenses} incomes={incomes}/>
             </div>
 
             <div className="graficos-controls">
-                <Select defaultValue="Janeiro" size="small" >
+                <Select defaultValue="Janeiro" size="small" onChange={handleMonth} >
                     {[
                         'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
                         'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
