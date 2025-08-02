@@ -14,17 +14,23 @@
     "nome": {
       "type": "string"
     },
-    "saldo": {
-      "type": "decimal"
-    },
-    "limite": {
-      "type": "decimal"
-    },
     "user": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "cartoes"
+    },
+    "numero": {
+      "type": "integer"
+    },
+    "validade": {
+      "type": "string"
+    },
+    "cvv": {
+      "type": "integer"
+    },
+    "tipo": {
+      "type": "string"
     }
   }
 }

@@ -1,5 +1,6 @@
 import { Box, TextField, Button, Typography, Modal, Fade } from "@mui/material";
 import { useState } from "react";
+import { cardsService } from "@/services/cardsService";
 
 export default function AddCartaoModal({ open, onClose, onAddCartao }) {
     const [nome, setNome] = useState('');
@@ -7,40 +8,34 @@ export default function AddCartaoModal({ open, onClose, onAddCartao }) {
     const [validade, setValidade] = useState('');
     const [cvv, setCvv] = useState('');
 
-    const formatValidade = (value) => {
-        const onlyNums = value.replace(/\D/g, '');
-        if (onlyNums.length === 0) return '';
-        if (onlyNums.length <= 2) return onlyNums;
-
-        return onlyNums.slice(0, 2) + '/' + onlyNums.slice(2, 4);
-    };
-
-    const handleValidadeChange = (e) => {
-        const formatted = formatValidade(e.target.value);
-        setValidade(formatted);
-    };
-
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-
-        if (!numero.trim() || !validade.trim() || !cvv.trim()) {
+        if (!nome.trim() || !numero.trim() || !validade.trim() || !cvv.trim()) {
             alert('Por favor, preencha todos os campos obrigatórios.');
             return;
         }
 
+        // Chamar a API
+        try {
+            const response = await cardsService.createCard({
+                nome: nome,
+                numero: numero,
+                validade: validade,
+                cvv: cvv,
+            });
+            console.log('Cartão criado com sucesso:', response);
+        } catch (error) {
+            console.error('Erro ao criar cartão:', error);
+        }
 
         onAddCartao({
             id: Date.now(),
-            name: nome || "Sem nome",
-            value: 0,
-            type: "crédito",
+            nome,
             numero,
             validade,
             cvv,
         });
-
 
         setNome('');
         setNumero('');
@@ -71,9 +66,11 @@ export default function AddCartaoModal({ open, onClose, onAddCartao }) {
                     <Typography variant="h5" sx={{ color: '#202020' }}>Adicionar Cartão</Typography>
 
                     <TextField
-                        label="Nome do Cartão (opcional)"
+                        label="Nome do Cartão"
                         value={nome}
                         onChange={(e) => setNome(e.target.value)}
+                        required
+                        placeholder="Cartão Nubank"
                     />
 
                     <TextField
@@ -88,12 +85,11 @@ export default function AddCartaoModal({ open, onClose, onAddCartao }) {
                     <TextField
                         label="Validade (MM/AA)"
                         value={validade}
-                        onChange={handleValidadeChange}
+                        onChange={(e) => setValidade(e.target.value)}
                         required
                         placeholder="08/33"
                         inputProps={{ maxLength: 5 }}
                     />
-
 
                     <TextField
                         label="Código de Segurança (CVV)"

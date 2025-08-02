@@ -7,79 +7,108 @@ import QuickAccess from "@/components/QuickAccess";
 import LineCharts from "@/components/LineCharts";
 import OverviewSection from "@/components/OverviewSection";
 import NavBar from "@/components/NavBar";
+import { balanceService } from "@/services/balanceService";
+import { expensesService } from "@/services/expensesService";
+import { cardsService } from "@/services/cardsService";
 import styles from "@/app/page.module.css";
 
 export default function Dashboard() {
 
-  const receitasPadrao = [
-    { id: 1, name: "Salário", value: 5000 },
-    { id: 2, name: "Freelancer", value: 1500 },
-  ];
+  const receitasPadrao = [];
+  const despesasPadrao = [];
+  const cartaoPadrao = [];
 
-  const despesasPadrao = [
-    { id: 1, name: "Compras", value: 320.75 },
-    { id: 2, name: "Conta", value: 89.90 },
-    { id: 3, name: "Conta", value: 45.60 },
-    { id: 4, name: "Conta", value: 150.00 },
-    { id: 5, name: "Streaming", value: 34.90 },
-    { id: 6, name: "Viagem", value: 280.00 },
-    { id: 7, name: "Farmácia", value: 65.00 },
-    { id: 8, name: "Comida", value: 120.00 }
-  ];
-
-  const cartaoPadrao = [
-    { id: 1, name: "Visa Gold", value: 1500.00, type: "crédito" },
-    { id: 2, name: "Master Black", value: 2450.60, type: "débito" },
-    { id: 3, name: "Elo Mais", value: 980.45, type: "crédito" },
-    { id: 4, name: "Nubank", value: 3200.00, type: "débito" },
-    { id: 5, name: "Inter", value: 890.75, type: "crédito" },
-  ];
-
-
-  const [receitas, setReceitas] = useState(receitasPadrao);
+  const [receitas, setReceitas] = useState([]);
   const [despesas, setDespesas] = useState(despesasPadrao);
   const [cartoes, setCartoes] = useState(cartaoPadrao);
 
-
+  // Carregar receitas da API
   useEffect(() => {
-    const saved = localStorage.getItem("receitas");
-    if (saved) setReceitas(JSON.parse(saved));
+    const loadReceitas = async () => {
+      try {
+        const response = await balanceService.getAllBalances();
+        console.log('Receitas da API:', response);
+        const receitasFromAPI = response.map(item => ({
+          id: item.id,
+          name: item.nome,
+          value: item.valor
+        }));
+        console.log('Receitas mapeadas:', receitasFromAPI);
+        setReceitas(receitasFromAPI);
+      } catch (error) {
+        console.error('Erro ao carregar receitas:', error);
+        setReceitas(receitasPadrao);
+      }
+    };
+
+    loadReceitas();
   }, []);
 
+  // Carregar despesas da API
   useEffect(() => {
-    const saved = localStorage.getItem("despesas");
-    if (saved) setDespesas(JSON.parse(saved));
+    const loadDespesas = async () => {
+      try {
+        const response = await expensesService.getAllExpenses();
+        console.log('Despesas da API:', response);
+        const despesasFromAPI = response.map(item => ({
+          id: item.id,
+          name: item.nome,
+          value: item.valor
+        }));
+        console.log('Despesas mapeadas:', despesasFromAPI);
+        setDespesas(despesasFromAPI);
+      } catch (error) {
+        console.error('Erro ao carregar despesas:', error);
+        setDespesas(despesasPadrao);
+      }
+    };
+
+    loadDespesas();
   }, []);
 
+  // Carregar cartões da API
   useEffect(() => {
-    const saved = localStorage.getItem("cartoes");
-    if (saved) setCartoes(JSON.parse(saved));
+    const loadCartoes = async () => {
+      try {
+        const response = await cardsService.getAllCards();
+        console.log('Cartões da API:', response);
+        const cartoesFromAPI = response.map(item => ({
+          id: item.id,
+          name: item.nome || 'Cartão',
+          value: 0, // ou algum valor padrão
+          type: item.tipo || 'crédito',
+          numero: item.numero,
+          validade: item.validade,
+          cvv: item.cvv
+        }));
+        console.log('Cartões mapeados:', cartoesFromAPI);
+        setCartoes(cartoesFromAPI);
+      } catch (error) {
+        console.error('Erro ao carregar cartões:', error);
+        setCartoes(cartaoPadrao);
+      }
+    };
+
+    loadCartoes();
   }, []);
 
 
-  useEffect(() => {
-    localStorage.setItem("receitas", JSON.stringify(receitas));
-  }, [receitas]);
-
-  useEffect(() => {
-    localStorage.setItem("despesas", JSON.stringify(despesas));
-  }, [despesas]);
-
-  useEffect(() => {
-    localStorage.setItem("cartoes", JSON.stringify(cartoes));
-  }, [cartoes]);
-
-
-  const handleAddReceita = (novaReceita) => {
-    setReceitas((prev) => [...prev, { ...novaReceita, id: prev.length + 1 }]);
+  const handleAddReceita = async (novaReceita) => {
+    // Atualizar o estado local imediatamente
+    const receitaComId = { ...novaReceita, id: Date.now() };
+    setReceitas((prev) => [...prev, receitaComId]);
   };
 
   const handleAddDespesa = (novaDespesa) => {
-    setDespesas((prev) => [...prev, { ...novaDespesa, id: prev.length + 1 }]);
+    // Atualizar o estado local imediatamente
+    const despesaComId = { ...novaDespesa, id: Date.now() };
+    setDespesas((prev) => [...prev, despesaComId]);
   };
 
   const handleAddCartao = (novoCartao) => {
-    setCartoes((prev) => [...prev, { ...novoCartao, id: prev.length + 1 }]);
+    // Atualizar o estado local imediatamente
+    const cartaoComId = { ...novoCartao, id: Date.now() };
+    setCartoes((prev) => [...prev, cartaoComId]);
   };
 
 

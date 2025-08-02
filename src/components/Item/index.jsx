@@ -25,7 +25,7 @@ export default function Item({ name, value, type, itemType, width }) {
 
   let detail = (
     <Typography variant="body1" sx={{textAlign:'end',width: '10vw'}} >
-      {"R$ " + value.toLocaleString('pt-br', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+      {"R$ " + (value || 0).toLocaleString('pt-br', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
     </Typography>
   );
 
@@ -106,7 +106,7 @@ export default function Item({ name, value, type, itemType, width }) {
           display: 'flex',
           marginTop: '-0.6vh',
           marginBottom: 0
-        }}>{'R$ ' + value.toLocaleString('pt-br', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</Typography>
+        }}>{'R$ ' + (value || 0).toLocaleString('pt-br', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</Typography>
       </>
     );
 

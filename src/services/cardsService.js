@@ -3,47 +3,49 @@ import apiService from './apiService';
 export const cardsService = {
   // Buscar todos os cartões
   async getAllCards() {
-    return await apiService.get('/cartoes?populate=*');
+    return await apiService.get('/api/cartaos?populate=*');
   },
 
   // Buscar cartão por ID
   async getCardById(id) {
-    return await apiService.get(`/cartoes/${id}?populate=*`);
+    return await apiService.get(`/api/cartaos/${id}?populate=*`);
   },
 
   // Criar novo cartão
   async createCard(cardData) {
     const newCard = {
       nome: cardData.nome,
-      saldo: cardData.saldo || 0,
-      limite: cardData.limite || 0,
+      numero: cardData.numero,
+      validade: cardData.validade,
+      cvv: cardData.cvv,
     };
-    return await apiService.post('/cartoes', newCard);
+    return await apiService.post('/api/cartaos', newCard);
   },
 
   // Atualizar cartão
   async updateCard(id, cardData) {
     const updateData = {
       nome: cardData.nome,
-      saldo: cardData.saldo,
-      limite: cardData.limite,
+      numero: cardData.numero,
+      validade: cardData.validade,
+      cvv: cardData.cvv,
     };
-    return await apiService.put(`/cartoes/${id}`, updateData);
+    return await apiService.put(`/api/cartaos/${id}`, updateData);
   },
 
   // Deletar cartão
   async deleteCard(id) {
-    return await apiService.delete(`/cartoes/${id}`);
+    return await apiService.delete(`/api/cartaos/${id}`);
   },
 
   // Atualizar saldo do cartão
   async updateCardBalance(id, novoSaldo) {
-    return await apiService.put(`/cartoes/${id}`, { saldo: novoSaldo });
+    return await apiService.put(`/api/cartaos/${id}`, { saldo: novoSaldo });
   },
 
   // Buscar despesas de um cartão específico
   async getCardExpenses(cardId) {
-    return await apiService.get(`/despesas?filters[cartao][id][$eq]=${cardId}&populate=*`);
+    return await apiService.get(`/api/despesas?filters[cartao][id][$eq]=${cardId}&populate=*`);
   },
 
   // Verificar saldo disponível vs limite
@@ -63,34 +65,6 @@ export const cardsService = {
       };
     } catch (error) {
       console.error('Erro ao verificar status do cartão:', error);
-      throw error;
-    }
-  },
-
-  // Adicionar gasto ao cartão (diminui saldo disponível)
-  async addExpenseToCard(cardId, valor) {
-    try {
-      const card = await this.getCardById(cardId);
-      const saldoAtual = parseFloat(card.attributes?.saldo || card.saldo || 0);
-      const novoSaldo = saldoAtual + parseFloat(valor);
-      
-      return await this.updateCardBalance(cardId, novoSaldo);
-    } catch (error) {
-      console.error('Erro ao adicionar gasto ao cartão:', error);
-      throw error;
-    }
-  },
-
-  // Remover gasto do cartão (aumenta saldo disponível)
-  async removeExpenseFromCard(cardId, valor) {
-    try {
-      const card = await this.getCardById(cardId);
-      const saldoAtual = parseFloat(card.attributes?.saldo || card.saldo || 0);
-      const novoSaldo = saldoAtual - parseFloat(valor);
-      
-      return await this.updateCardBalance(cardId, novoSaldo);
-    } catch (error) {
-      console.error('Erro ao remover gasto do cartão:', error);
       throw error;
     }
   },

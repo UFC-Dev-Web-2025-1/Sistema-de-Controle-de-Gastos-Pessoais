@@ -9,17 +9,30 @@ import styles from "../page.module.css";
 
 export default function Despesas() {
     // Buscar despesas da API usando o hook
-    const { data: expensesData, loading, error } = useApi(expensesService.getAllExpenses);
+    const { data: expensesData, loading, error, refetch } = useApi(expensesService.getAllExpenses);
+
+    // Debug logs
+    console.log('=== DEBUG DESPESAS ===');
+    console.log('expensesData:', expensesData);
+    console.log('loading:', loading);
+    console.log('error:', error);
+    console.log('=====================');
 
     // Transformar os dados da API para o formato esperado pelo componente
     const formatExpenses = (apiData) => {
-        if (!apiData || !Array.isArray(apiData)) return [];
+        if (!apiData || !Array.isArray(apiData)) {
+            return [];
+        }
         
-        return apiData.map(item => ({
-            id: item.id,
-            name: item.attributes?.nome || item.nome || 'Sem nome',
-            value: item.attributes?.valor || item.valor || '0,00',
-        }));
+        const formatted = apiData.map(item => {
+            const formattedItem = {
+                id: item.id,
+                name: item.attributes?.nome || item.nome || 'Sem nome',
+                value: item.attributes?.valor || item.valor || '0,00',
+            };
+            return formattedItem;
+        });
+        return formatted;
     };
 
     const formattedExpenses = formatExpenses(expensesData);
@@ -79,7 +92,8 @@ export default function Despesas() {
                 <ExpensesBoard 
                     width='80vw' 
                     height='60vh' 
-                    items={formattedExpenses} 
+                    items={formattedExpenses}
+                    onRefresh={refetch}
                 />
             </main>
         </div>

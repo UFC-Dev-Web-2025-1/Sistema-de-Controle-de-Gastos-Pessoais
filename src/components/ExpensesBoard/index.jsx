@@ -15,9 +15,10 @@ import {
 } from '@mui/icons-material';
 import ItemList from '../ItemList';
 import AddDespesaModal from '../QuickAcessModals/AddDespesaModal';
+import { expensesService } from '@/services/expensesService';
 import './style.css';
 
-const ExpensesBoard = ({ height, width, items = [] }) => {
+const ExpensesBoard = ({ height, width, items = [], onRefresh }) => {
   const [searchTerm, setSearchTerm] = useState('');
   // Usar os items passados como prop
   const [expenses, setExpenses] = useState(items);
@@ -54,12 +55,20 @@ const ExpensesBoard = ({ height, width, items = [] }) => {
   };
 
   const [openDespesa, setOpenDespesa] = useState(false);
-  const handleAddDespesa = (novaDespesa) => {
-    const atualizadas = [...expenses, novaDespesa];
-    setExpenses(atualizadas);
-    localStorage.setItem("despesas", JSON.stringify(atualizadas));
+  
+  const handleAddDespesa = async (novaDespesa) => {
+    try {
+      // O modal já criou a despesa na API, apenas atualizamos a lista
+      console.log('Nova despesa adicionada:', novaDespesa);
+      
+      // Chamar onRefresh para recarregar os dados da API
+      if (onRefresh) {
+        await onRefresh();
+      }
+    } catch (error) {
+      console.error('Erro ao atualizar lista:', error);
+    }
   };
-
 
   return (
     <>
