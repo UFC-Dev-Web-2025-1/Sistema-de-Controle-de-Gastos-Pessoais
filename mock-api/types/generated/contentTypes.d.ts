@@ -416,7 +416,7 @@ export interface ApiCartaoCartao extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    limite: Schema.Attribute.Decimal;
+    cvv: Schema.Attribute.Integer;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -424,8 +424,8 @@ export interface ApiCartaoCartao extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     nome: Schema.Attribute.String;
+    numero: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
-    saldo: Schema.Attribute.Decimal;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -433,6 +433,7 @@ export interface ApiCartaoCartao extends Struct.CollectionTypeSchema {
       'manyToOne',
       'plugin::users-permissions.user'
     >;
+    validade: Schema.Attribute.String;
   };
 }
 

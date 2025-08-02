@@ -7,17 +7,17 @@ export default function OverviewSection({ totalReceitas, totalDespesas, totalSal
     const cardsData = [
         {
             icon: "BanknoteArrowUp",
-            value: totalReceitas.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+            value: (totalReceitas || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
             label: "Receitas",
         },
         {
             icon: "BanknoteArrowDown",
-            value: totalDespesas.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+            value: (totalDespesas || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
             label: "Despesas",
         },
         {
             icon: "DollarSign",
-            value: totalSaldo.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+            value: (totalSaldo || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
             label: "Saldo",
         },
     ];

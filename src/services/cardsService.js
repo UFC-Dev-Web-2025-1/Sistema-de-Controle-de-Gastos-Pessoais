@@ -3,42 +3,44 @@ import apiService from './apiService';
 export const cardsService = {
   // Buscar todos os cartões
   async getAllCards() {
-    return await apiService.get('/api/cartoes?populate=*');
+    return await apiService.get('/api/cartaos?populate=*');
   },
 
   // Buscar cartão por ID
   async getCardById(id) {
-    return await apiService.get(`/api/cartoes/${id}?populate=*`);
+    return await apiService.get(`/api/cartaos/${id}?populate=*`);
   },
 
   // Criar novo cartão
   async createCard(cardData) {
     const newCard = {
       nome: cardData.nome,
-      saldo: cardData.saldo || 0,
-      limite: cardData.limite || 0,
+      numero: cardData.numero,
+      validade: cardData.validade,
+      cvv: cardData.cvv,
     };
-    return await apiService.post('/api/cartoes', newCard);
+    return await apiService.post('/api/cartaos', newCard);
   },
 
   // Atualizar cartão
   async updateCard(id, cardData) {
     const updateData = {
       nome: cardData.nome,
-      saldo: cardData.saldo,
-      limite: cardData.limite,
+      numero: cardData.numero,
+      validade: cardData.validade,
+      cvv: cardData.cvv,
     };
-    return await apiService.put(`/api/cartoes/${id}`, updateData);
+    return await apiService.put(`/api/cartaos/${id}`, updateData);
   },
 
   // Deletar cartão
   async deleteCard(id) {
-    return await apiService.delete(`/api/cartoes/${id}`);
+    return await apiService.delete(`/api/cartaos/${id}`);
   },
 
   // Atualizar saldo do cartão
   async updateCardBalance(id, novoSaldo) {
-    return await apiService.put(`/api/cartoes/${id}`, { saldo: novoSaldo });
+    return await apiService.put(`/api/cartaos/${id}`, { saldo: novoSaldo });
   },
 
   // Buscar despesas de um cartão específico
