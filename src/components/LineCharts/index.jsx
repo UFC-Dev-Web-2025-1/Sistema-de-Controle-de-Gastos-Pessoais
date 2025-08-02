@@ -3,18 +3,16 @@ import { LineChart } from '@mui/x-charts/LineChart';
 
 const margin = { right: 24 };
 
-const receitaData = [5000, 4500, 4800, 5200, 6000, 5800, 6100];
-const despesasData = [3000, 2800, 3500, 3300, 4000, 3900, 4200];
 
-const meses = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul'];
+const meses = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago'];
 
-export default function LineCharts() {
+export default function LineCharts({incomes, expenses}) {
   return (
     <LineChart
       height={300}
       series={[
-        { data: receitaData, label: 'Receita', color: '#1976d2' },
-        { data: despesasData, label: 'Despesas', color: '#d32f2f' },
+        { data: incomes, label: 'Receita', color: '#1976d2' },
+        { data: expenses, label: 'Despesas', color: '#d32f2f' },
       ]}
       xAxis={[{ scaleType: 'point', data: meses }]}
       yAxis={[{ width: 50 }]}

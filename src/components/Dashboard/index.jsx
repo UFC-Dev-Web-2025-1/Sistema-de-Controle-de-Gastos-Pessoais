@@ -124,7 +124,7 @@ export default function Dashboard() {
             height: "24.4vh",
           }}
         >
-          <LineCharts />
+          <LineCharts  expenses={despesas} incomes={receitas}/>
         </Box>
       </main>
     </div>
