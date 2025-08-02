@@ -66,34 +66,6 @@ export const cardsService = {
       throw error;
     }
   },
-
-  // Adicionar gasto ao cartão (diminui saldo disponível)
-  async addExpenseToCard(cardId, valor) {
-    try {
-      const card = await this.getCardById(cardId);
-      const saldoAtual = parseFloat(card.attributes?.saldo || card.saldo || 0);
-      const novoSaldo = saldoAtual + parseFloat(valor);
-      
-      return await this.updateCardBalance(cardId, novoSaldo);
-    } catch (error) {
-      console.error('Erro ao adicionar gasto ao cartão:', error);
-      throw error;
-    }
-  },
-
-  // Remover gasto do cartão (aumenta saldo disponível)
-  async removeExpenseFromCard(cardId, valor) {
-    try {
-      const card = await this.getCardById(cardId);
-      const saldoAtual = parseFloat(card.attributes?.saldo || card.saldo || 0);
-      const novoSaldo = saldoAtual - parseFloat(valor);
-      
-      return await this.updateCardBalance(cardId, novoSaldo);
-    } catch (error) {
-      console.error('Erro ao remover gasto do cartão:', error);
-      throw error;
-    }
-  },
 };
 
 export default cardsService;

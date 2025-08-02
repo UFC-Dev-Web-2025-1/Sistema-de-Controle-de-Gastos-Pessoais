@@ -1,13 +1,24 @@
 import { Box, TextField, Button, Typography, Modal, Fade } from "@mui/material";
 import { useState } from "react";
+import { balanceService } from "@/services/balanceService";
 
 export default function AddReceitaModal({ open, onClose, onAddReceita }) {
   const [nome, setNome] = useState('');
   const [valor, setValor] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Chamar a API
+    try {
+      const response = await balanceService.createBalance({
+        nome: nome,
+        valor: parseFloat(valor),
+      });
+      console.log('Receita criada com sucesso:', response);
+    } catch (error) {
+      console.error('Erro ao criar receita:', error);
+    }
 
     onAddReceita({
       id: Date.now(),
