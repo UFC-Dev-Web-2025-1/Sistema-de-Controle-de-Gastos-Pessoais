@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import { useEffect, useState } from 'react';
 import LineCharts from '../LineCharts';
 import PieCharts from '../PieCharts';
 import { Typography, Select, MenuItem, Button } from '@mui/material';
@@ -7,6 +7,8 @@ import { Download } from 'lucide-react';
 import './style.css';
 
 export default function GraphsSection() {
+
+    const [expenses, setExpenses] = useState([]);
 
     return (
         <div className="graficos-section">
