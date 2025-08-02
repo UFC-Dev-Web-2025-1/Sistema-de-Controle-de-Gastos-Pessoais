@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "saldos",
+  "info": {
+    "singularName": "saldo",
+    "pluralName": "saldos",
+    "displayName": "saldo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string"
+    },
+    "valor": {
+      "type": "decimal"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "saldos"
+    }
+  }
+}

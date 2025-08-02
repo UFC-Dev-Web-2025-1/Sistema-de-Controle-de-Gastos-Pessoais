@@ -25,13 +25,21 @@ const ExpensesBoard = ({ height, width, items = [] }) => {
   // Atualizar expenses quando items mudar
   useEffect(() => {
     console.log('Items recebidos:', items);
-    setExpenses(items);
+    // Validar se items é um array válido
+    if (Array.isArray(items)) {
+      setExpenses(items);
+    } else {
+      console.warn('Items não é um array válido:', items);
+      setExpenses([]);
+    }
   }, [items]);
 
   // Filtrar despesas baseado no termo de busca
-  const filteredExpenses = expenses.filter(expense =>
-    expense.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredExpenses = expenses.filter(expense => {
+    // Verificar se expense e expense.name existem antes de aplicar o filtro
+    return expense && expense.name && 
+           expense.name.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
   console.log('Filtered expenses:', filteredExpenses);
 

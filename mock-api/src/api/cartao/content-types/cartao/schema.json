@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cartaos",
+  "info": {
+    "singularName": "cartao",
+    "pluralName": "cartaos",
+    "displayName": "cartão"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string"
+    },
+    "saldo": {
+      "type": "decimal"
+    },
+    "limite": {
+      "type": "decimal"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "cartoes"
+    }
+  }
+}

@@ -2,45 +2,85 @@
 
 import NavBar from "../../components/NavBar";
 import ExpensesBoard from "@/components/ExpensesBoard";
+import { useApi } from "@/hooks/useApi";
+import { expensesService } from "@/services/expensesService";
+import { CircularProgress, Box, Typography } from "@mui/material";
 import styles from "../page.module.css";
 
 export default function Despesas() {
-    const expensesDaily = [{
-        id: 1,
-        name: 'Comida',
-        value: '200,00',
-    },
-    {
-        id: 2,
-        name: 'Viagem',
-        value: '1800,00'
-    },
-    {
-        id: 3,
-        name: 'Livros',
-        value: '77,86'
-    },
-    {
-        id: 4,
-        name: 'Contas',
-        value: '550,00'
-    },
-    {
-        id: 5,
-        name: 'Transporte',
-        value: '120,00'
-    },
-    {
-        id: 6,
-        name: 'Lazer',
-        value: '300,00'
-    }];
+    // Buscar despesas da API usando o hook
+    const { data: expensesData, loading, error } = useApi(expensesService.getAllExpenses);
+
+    // Transformar os dados da API para o formato esperado pelo componente
+    const formatExpenses = (apiData) => {
+        if (!apiData || !Array.isArray(apiData)) return [];
+        
+        return apiData.map(item => ({
+            id: item.id,
+            name: item.attributes?.nome || item.nome || 'Sem nome',
+            value: item.attributes?.valor || item.valor || '0,00',
+        }));
+    };
+
+    const formattedExpenses = formatExpenses(expensesData);
+
+    // Mostrar loading enquanto busca os dados
+    if (loading) {
+        return (
+            <div className={styles.page}>
+                <main className={styles.main}>
+                    <NavBar page='despesas'/>
+                    <Box 
+                        display="flex" 
+                        flexDirection="column" 
+                        justifyContent="center" 
+                        alignItems="center" 
+                        height="60vh"
+                    >
+                        <CircularProgress size={60} />
+                        <Typography variant="h6" sx={{ mt: 2 }}>
+                            Carregando despesas...
+                        </Typography>
+                    </Box>
+                </main>
+            </div>
+        );
+    }
+
+    // Mostrar erro se houver
+    if (error) {
+        return (
+            <div className={styles.page}>
+                <main className={styles.main}>
+                    <NavBar page='despesas'/>
+                    <Box 
+                        display="flex" 
+                        flexDirection="column" 
+                        justifyContent="center" 
+                        alignItems="center" 
+                        height="60vh"
+                    >
+                        <Typography variant="h6" color="error" sx={{ mb: 2 }}>
+                            Erro ao carregar despesas
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            Verifique se o servidor Strapi está rodando
+                        </Typography>
+                    </Box>
+                </main>
+            </div>
+        );
+    }
 
     return (
         <div className={styles.page}>
             <main className={styles.main}>
                 <NavBar page='despesas'/>
-                <ExpensesBoard width='80vw' height='60vh' items={expensesDaily} />
+                <ExpensesBoard 
+                    width='80vw' 
+                    height='60vh' 
+                    items={formattedExpenses} 
+                />
             </main>
         </div>
     );
