@@ -1,11 +1,12 @@
 import { Box, TextField, Button, Typography, Modal, Fade } from "@mui/material";
 import { useState } from "react";
+import { expensesService } from "@/services/expensesService";
 
 export default function AddDespesaModal({ open, onClose, onAddDespesa }) {
   const [nome, setNome] = useState('');
   const [valor, setValor] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const novaDespesa = {
@@ -13,6 +14,17 @@ export default function AddDespesaModal({ open, onClose, onAddDespesa }) {
       name: nome,
       value: parseFloat(valor),
     };
+
+    // Chamar a API
+    try {
+      const response = await expensesService.createExpense({
+        nome: nome,
+        valor: parseFloat(valor),
+      });
+      console.log('Despesa criada com sucesso:', response);
+    } catch (error) {
+      console.error('Erro ao criar despesa:', error);
+    }
 
     onAddDespesa(novaDespesa);
 

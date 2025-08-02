@@ -1,5 +1,5 @@
 // API Base Configuration para Strapi
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337';
 const API_TOKEN = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
 
 class ApiService {
@@ -11,15 +11,9 @@ class ApiService {
   async request(endpoint, options = {}) {
     const url = `${this.baseURL}${endpoint}`;
     
-    // Obter token do usuário logado (se existir)
-    const userToken = typeof window !== 'undefined' ? localStorage.getItem('authToken') : null;
-    
     const config = {
       headers: {
         'Content-Type': 'application/json',
-        // Priorizar token do usuário, depois token da API
-        ...(userToken && { 'Authorization': `Bearer ${userToken}` }),
-        ...(!userToken && this.token && { 'Authorization': `Bearer ${this.token}` }),
       },
       ...options,
     };

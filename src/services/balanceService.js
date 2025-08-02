@@ -3,12 +3,12 @@ import apiService from './apiService';
 export const balanceService = {
   // Buscar todos os saldos
   async getAllBalances() {
-    return await apiService.get('/saldos?populate=*&sort[0]=createdAt:desc');
+    return await apiService.get('/api/saldos?populate=*&sort[0]=createdAt:desc');
   },
 
   // Buscar saldo por ID
   async getBalanceById(id) {
-    return await apiService.get(`/saldos/${id}?populate=*`);
+    return await apiService.get(`/api/saldos/${id}?populate=*`);
   },
 
   // Criar novo registro de saldo
@@ -20,7 +20,7 @@ export const balanceService = {
       categoria: balanceData.categoria || 'Outros',
       data: balanceData.data || new Date().toISOString(),
     };
-    return await apiService.post('/saldos', newBalance);
+    return await apiService.post('/api/saldos', newBalance);
   },
 
   // Atualizar saldo
@@ -32,27 +32,27 @@ export const balanceService = {
       categoria: balanceData.categoria,
       data: balanceData.data,
     };
-    return await apiService.put(`/saldos/${id}`, updateData);
+    return await apiService.put(`/api/saldos/${id}`, updateData);
   },
 
   // Deletar saldo
   async deleteBalance(id) {
-    return await apiService.delete(`/saldos/${id}`);
+    return await apiService.delete(`/api/saldos/${id}`);
   },
 
   // Buscar saldo atual
   async getCurrentBalance() {
-    return await apiService.get(`/saldos?sort[0]=createdAt:desc&pagination[limit]=1&populate=*`);
+    return await apiService.get(`/api/saldos?sort[0]=createdAt:desc&pagination[limit]=1&populate=*`);
   },
 
   // Buscar histórico de saldos por período
   async getBalanceHistory(startDate, endDate) {
-    return await apiService.get(`/saldos?filters[data][$gte]=${startDate}&filters[data][$lte]=${endDate}&sort[0]=createdAt:desc&populate=*`);
+    return await apiService.get(`/api/saldos?filters[data][$gte]=${startDate}&filters[data][$lte]=${endDate}&sort[0]=createdAt:desc&populate=*`);
   },
 
   // Buscar saldos por tipo
   async getBalancesByType(tipo) {
-    return await apiService.get(`/saldos?filters[tipo][$eq]=${tipo}&sort[0]=createdAt:desc&populate=*`);
+    return await apiService.get(`/api/saldos?filters[tipo][$eq]=${tipo}&sort[0]=createdAt:desc&populate=*`);
   },
 
   // Adicionar receita (aumenta saldo)
@@ -64,7 +64,7 @@ export const balanceService = {
       categoria: incomeData.categoria || 'Receita',
       data: incomeData.data || new Date().toISOString(),
     };
-    return await apiService.post('/saldos', income);
+    return await apiService.post('/api/saldos', income);
   },
 
   // Registrar despesa (diminui saldo)
@@ -76,7 +76,7 @@ export const balanceService = {
       categoria: expenseData.categoria || 'Despesa',
       data: expenseData.data || new Date().toISOString(),
     };
-    return await apiService.post('/saldos', expense);
+    return await apiService.post('/api/saldos', expense);
   },
 
   // Fazer transferência entre contas/cartões
@@ -90,13 +90,13 @@ export const balanceService = {
       contaOrigem: transferData.contaOrigem,
       contaDestino: transferData.contaDestino,
     };
-    return await apiService.post('/saldos', transfer);
+    return await apiService.post('/api/saldos', transfer);
   },
 
   // Calcular saldo total
   async calculateTotalBalance() {
     try {
-      const allBalances = await apiService.get(`/saldos?populate=*`);
+      const allBalances = await apiService.get(`/api/saldos?populate=*`);
       
       const total = allBalances.reduce((sum, balance) => {
         const value = parseFloat(balance.attributes?.valor || balance.valor || 0);
