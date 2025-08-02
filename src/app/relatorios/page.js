@@ -6,7 +6,7 @@ import { useApi } from "@/hooks/useApi";
 import { expensesService } from "@/services/expensesService";
 import { balanceService } from "@/services/balanceService";
 import styles from "../page.module.css";
-
+import { Box, CircularProgress, Typography } from "@mui/material";
 export default function Relatorios() {
     const { data: expensesData, loading: loadingExp, error: errorExp } = useApi(expensesService.getAllExpenses);
     const { data: incomesData, loading: loadingInc, error: errorInc } = useApi(balanceService.getAllBalances);

@@ -4,7 +4,7 @@ import { LineChart } from '@mui/x-charts/LineChart';
 const margin = { right: 24 };
 
 
-const meses = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul'];
+const meses = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago'];
 
 export default function LineCharts({incomes, expenses}) {
   return (
