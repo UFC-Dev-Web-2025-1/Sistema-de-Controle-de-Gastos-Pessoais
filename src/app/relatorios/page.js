@@ -62,11 +62,13 @@ export default function Relatorios() {
     
     const [expenses, setExpenses] = useState(expensesData);
     const [incomes, setIncomes] = useState(incomesData);
+    const [month, setMonth] = useState('janeiro');
 
     const handleMonth = (e) => {
         e.preventDefault();
         setExpenses(expenses.filter((expense) => e.targe.value == new Date(expense.data).toLocaleString('pt-BR', {month: 'long'})));
         setIncomes(incomes.filter((income) => e.targe.value == new Date(income.data).toLocaleString('pt-BR', {month: 'long'})));
+        setMonth(e.target.value);
     }
 
     return (
@@ -77,6 +79,7 @@ export default function Relatorios() {
                 expenses={expenses} 
                 incomes={incomes} 
                 handleMonth={handleMonth}
+                month={month}
                 />
             </main>
         </div>
