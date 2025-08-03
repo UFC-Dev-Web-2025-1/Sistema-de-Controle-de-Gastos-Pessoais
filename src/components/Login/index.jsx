@@ -94,10 +94,8 @@ export default function Login() {
                     </Box>
                     <Button startIcon={FinexaIcon}
                         sx={{
-                            width: '12.2vw',
                             display: 'flex',
-                            justifyContent: 'flex-start',
-                            gap: '1.6vw',
+                            justifyContent: 'center',
                             border: '1px solid #747775',
                             color: '#202020',
                             textTransform: 'none',
