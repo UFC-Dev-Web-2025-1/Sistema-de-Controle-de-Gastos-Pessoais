@@ -28,5 +28,3 @@ export function useApi(apiFunction) {
 
   return { data, loading, error, refetch: fetchData };
 }
-
-export { useApi };
